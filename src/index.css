@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto px-4;
+  }
+
+  .center {
+    @apply flex items-center justify-center gap-4;
+  }
+
   .navlink {
-    @apply text-xl inline-block px-6 py-2 font-semibold text-gray-500 hover:text-black;
+    @apply px-4 py-2 hover:text-primary transition-colors duration-300;
   }
 
   .primary-btn {
@@ -16,4 +24,13 @@
   .center {
     @apply flex justify-center items-center;
   }
+}
+
+/* Custom styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white;
 }
