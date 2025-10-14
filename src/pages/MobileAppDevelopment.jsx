@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaMobile, FaCode, FaRocket, FaShieldAlt, FaUsers, FaApple, FaAndroid } from 'react-icons/fa';
 import ServiceTemplate from './ServiceTemplate';
+import mobImage from '../assets/mob.png';
 
 const MobileAppDevelopment = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
   const serviceData = {
     title: "Mobile App Development",
     subtitle: "Create Exceptional Mobile Experiences",
     description: "Build high-performance mobile applications that engage users and drive business growth across iOS and Android platforms.",
     highlightText: "We create mobile apps that users love to use, with intuitive interfaces and seamless performance.",
     approach: "Our mobile development approach focuses on creating apps that are not just functional, but delightful to use.",
-    approachImage: "/images/services/mobile-approach.jpg",
+    approachImage: mobImage,
     approachPoints: [
       {
         icon: <FaMobile className="text-4xl text-primary" />,
@@ -102,22 +107,22 @@ const MobileAppDevelopment = () => {
     ],
     projects: [
       {
+        title: "Food Delivery Mobile App",
+        category: "Food & Delivery",
+        imageSet: 'a',
+        description: "Complete pizza ordering and restaurant delivery app with menu browsing, customization options, and seamless checkout experience."
+      },
+      {
+        title: "Grocery Shopping App",
+        category: "E-commerce",
+        imageSet: 'i',
+        description: "Modern grocery shopping platform featuring fresh produce, real-time inventory, promotions, and intuitive cart management for convenient online shopping."
+      },
+      {
         title: "Fitness Tracking App",
-        description: "A comprehensive fitness app with workout tracking and social features.",
-        image: "/images/projects/mobile-1.jpg",
-        link: "/projects/fitness-app"
-      },
-      {
-        title: "E-commerce App",
-        description: "Feature-rich mobile shopping experience with secure payments.",
-        image: "/images/projects/mobile-2.jpg",
-        link: "/projects/ecommerce-app"
-      },
-      {
-        title: "Social Networking App",
-        description: "Engaging social platform with real-time messaging and content sharing.",
-        image: "/images/projects/mobile-3.jpg",
-        link: "/projects/social-app"
+        category: "Health & Fitness",
+        imageSet: 'd',
+        description: "Comprehensive workout tracking app with personalized exercise routines, progress monitoring, video demonstrations, and daily fitness goals."
       }
     ],
     faqs: [

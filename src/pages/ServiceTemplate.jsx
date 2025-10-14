@@ -7,6 +7,10 @@ const ServiceTemplate = ({ serviceData }) => {
   const location = useLocation();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
+  useEffect(() => {
     if (location.hash === '#contact') {
       const contactSection = document.getElementById('contact');
       if (contactSection) {

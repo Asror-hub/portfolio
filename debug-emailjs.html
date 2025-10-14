@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Debug Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <h1>EmailJS Debug Test</h1>
+    
+    <div id="status">Loading...</div>
+    
+    <form id="test-form">
+        <h2>Test Your Credentials</h2>
+        
+        <div>
+            <label>Service ID:</label>
+            <input type="text" id="serviceId" placeholder="service_abc123" value="service_soltech">
+        </div>
+        
+        <div>
+            <label>Template ID:</label>
+            <input type="text" id="templateId" placeholder="template_xyz789" value="template_contact_form">
+        </div>
+        
+        <div>
+            <label>Public Key:</label>
+            <input type="text" id="publicKey" placeholder="user_abc123def456" value="">
+        </div>
+        
+        <div>
+            <label>Your Name:</label>
+            <input type="text" id="fromName" value="Test User">
+        </div>
+        
+        <div>
+            <label>Your Email:</label>
+            <input type="email" id="fromEmail" value="test@example.com">
+        </div>
+        
+        <div>
+            <label>Message:</label>
+            <textarea id="message" rows="4">This is a test message from the debug form.</textarea>
+        </div>
+        
+        <button type="submit">Send Test Email</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('status').textContent = 'Ready to test!';
+        
+        document.getElementById('test-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const serviceId = document.getElementById('serviceId').value;
+            const templateId = document.getElementById('templateId').value;
+            const publicKey = document.getElementById('publicKey').value;
+            const fromName = document.getElementById('fromName').value;
+            const fromEmail = document.getElementById('fromEmail').value;
+            const message = document.getElementById('message').value;
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>🔄 Sending email...</p>';
+            
+            try {
+                const templateParams = {
+                    from_name: fromName,
+                    from_email: fromEmail,
+                    message: message,
+                    to_name: 'SOLTECH Team',
+                    reply_to: fromEmail,
+                    to_email: 'asrorodilov@email.com',
+                    company_name: 'SOLTECH',
+                    website: 'https://soltech.com',
+                    current_date: new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                };
+                
+                console.log('Testing with credentials:', { serviceId, templateId, publicKey });
+                console.log('Template params:', templateParams);
+                
+                const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+                
+                resultDiv.innerHTML = `
+                    <div style="color: green; padding: 10px; border: 1px solid green; background: #f0fff0;">
+                        <h3>✅ Success!</h3>
+                        <p>Email sent successfully!</p>
+                        <p>Status: ${result.status}</p>
+                        <p>Check your email: asrorodilov@email.com</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                
+                let errorMessage = 'Unknown error occurred';
+                
+                if (error.text) {
+                    if (error.text.includes('Public Key is invalid')) {
+                        errorMessage = '❌ Public Key is invalid. Please check your Public Key from EmailJS dashboard.';
+                    } else if (error.text.includes('Service ID')) {
+                        errorMessage = '❌ Service ID is invalid. Please check your Service ID.';
+                    } else if (error.text.includes('Template ID')) {
+                        errorMessage = '❌ Template ID is invalid. Please check your Template ID.';
+                    } else {
+                        errorMessage = `❌ Error: ${error.text}`;
+                    }
+                } else if (error.message) {
+                    errorMessage = `❌ Error: ${error.message}`;
+                }
+                
+                resultDiv.innerHTML = `
+                    <div style="color: red; padding: 10px; border: 1px solid red; background: #fff0f0;">
+                        <h3>❌ Failed to send email</h3>
+                        <p>${errorMessage}</p>
+                        <p><strong>Status:</strong> ${error.status || 'Unknown'}</p>
+                        <p><strong>Text:</strong> ${error.text || 'No additional info'}</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -30,11 +30,18 @@ const processSteps = [
 
 const Process = () => {
   return (
-    <section className="py-20 bg-gray-50" id="process">
+    <section className="section-padding bg-dark-800/30" id="process">
       <div className="container">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl font-bold mb-4">Our Process</h2>
-          <p className="text-gray-500">A proven methodology for delivering exceptional results</p>
+        <div className="text-left mb-16" data-aos="fade-up">
+          <div className="flex items-center mb-6">
+            <div className="w-6 h-6 border border-primary-500/30 rounded-full flex items-center justify-center">
+              <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+            </div>
+            <div className="w-40 h-px bg-gradient-to-r from-primary-500 to-accent-500 ml-3"></div>
+            <div className="w-1 h-1 bg-accent-500 rounded-full"></div>
+          </div>
+          <h2 className="heading-2 mb-4">Our <span className="text-gradient">Process</span></h2>
+          <p className="body-text-lg">A proven methodology for delivering exceptional results</p>
         </div>
         <div className="max-w-4xl mx-auto">
           <ProcessTimeline steps={processSteps} />

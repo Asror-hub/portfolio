@@ -147,15 +147,15 @@ const SolutionTemplate = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-dark-900 min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-dark-gradient">
         <div className="container mx-auto px-4">
-          <div className="text-center text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up">
+          <div className="text-center text-neutral-100">
+            <h1 className="heading-1 mb-6" data-aos="fade-up">
               {solution.title}
             </h1>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            <p className="body-text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
               {solution.description}
             </p>
           </div>
@@ -163,23 +163,23 @@ const SolutionTemplate = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="section-padding bg-dark-800/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center" data-aos="fade-up">
-              Key Features
+            <h2 className="heading-2 mb-8 text-center" data-aos="fade-up">
+              Key <span className="text-gradient">Features</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {solution.features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-xl shadow-md"
+                  className="card group hover:scale-105"
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
                   <div className="flex items-center gap-4">
-                    <FaArrowRight className="text-primary text-xl" />
-                    <h3 className="text-xl font-semibold">{feature}</h3>
+                    <FaArrowRight className="text-primary-400 text-xl" />
+                    <h3 className="heading-3">{feature}</h3>
                   </div>
                 </div>
               ))}
@@ -189,23 +189,23 @@ const SolutionTemplate = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-dark-900/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center" data-aos="fade-up">
-              Business Benefits
+            <h2 className="heading-2 mb-8 text-center" data-aos="fade-up">
+              Business <span className="text-gradient">Benefits</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {solution.benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 p-6 rounded-xl"
+                  className="card group hover:scale-105"
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
                   <div className="flex items-center gap-4">
-                    <FaArrowRight className="text-primary text-xl" />
-                    <p className="text-gray-700">{benefit}</p>
+                    <FaArrowRight className="text-accent-400 text-xl" />
+                    <p className="body-text">{benefit}</p>
                   </div>
                 </div>
               ))}
@@ -215,18 +215,18 @@ const SolutionTemplate = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className="section-padding bg-dark-800/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6" data-aos="fade-up">
-              Ready to Get Started?
+            <h2 className="heading-2 mb-6" data-aos="fade-up">
+              Ready to Get <span className="text-gradient">Started?</span>
             </h2>
-            <p className="text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <p className="body-text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
               Let's discuss how our {solution.title.toLowerCase()} can help transform your business.
             </p>
             <button
               onClick={scrollToContact}
-              className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 group mx-auto"
+              className="group primary-btn glow px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
               data-aos="fade-up"
               data-aos-delay="200"
             >

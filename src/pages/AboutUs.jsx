@@ -1,119 +1,515 @@
-import React from 'react';
-import { FaRocket, FaUsers, FaLightbulb, FaHandshake, FaArrowRight, FaPlay } from 'react-icons/fa';
-import Team from '../components/Team/Team';
+import React, { useState, useEffect } from 'react';
+import { FaRocket, FaUsers, FaLightbulb, FaHandshake, FaArrowRight, FaPlay, FaArrowDown, FaBuilding, FaCode, FaGlobe } from 'react-icons/fa';
 import Layout from '../components/Layout/Layout';
 
 const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
+  // Company story timeline data
+  const storyTimeline = [
+    {
+      year: "2022",
+      title: "The Beginning",
+      description: "Soltech was founded with a vision to revolutionize digital solutions. We started as a small team of passionate developers with big dreams.",
+      visual: "startup",
+      icon: FaBuilding
+    },
+    {
+      year: "2023", 
+      title: "First Major Success",
+      description: "We delivered our first enterprise-level project, establishing ourselves as a reliable partner for complex software development needs.",
+      visual: "growth",
+      icon: FaCode
+    },
+    {
+      year: "2024",
+      title: "Technology Innovation",
+      description: "We expanded our expertise into AI and machine learning, becoming pioneers in cutting-edge technology solutions for modern businesses.",
+      visual: "innovation",
+      icon: FaRocket
+    },
+    {
+      year: "2025",
+      title: "Present Excellence", 
+      description: "Today, we stand as a leading technology company, delivering innovative solutions across the globe with our expert team and cutting-edge expertise in AI, web, and mobile development.",
+      visual: "present",
+      icon: FaUsers
+    }
+  ];
+
   const values = [
     {
-      icon: <FaRocket className="text-4xl text-primary" />,
+      icon: <FaRocket className="text-4xl text-primary-500" />,
       title: "Innovation",
       description: "We constantly push boundaries and explore new technologies to deliver cutting-edge solutions."
     },
     {
-      icon: <FaUsers className="text-4xl text-primary" />,
+      icon: <FaUsers className="text-4xl text-accent-500" />,
       title: "Collaboration",
       description: "We believe in the power of teamwork and work closely with our clients to achieve shared success."
     },
     {
-      icon: <FaLightbulb className="text-4xl text-primary" />,
+      icon: <FaLightbulb className="text-4xl text-warning-500" />,
       title: "Excellence",
       description: "We strive for excellence in everything we do, from code quality to customer service."
     },
     {
-      icon: <FaHandshake className="text-4xl text-primary" />,
+      icon: <FaHandshake className="text-4xl text-primary-500" />,
       title: "Integrity",
       description: "We maintain the highest standards of honesty and transparency in all our dealings."
     }
   ];
 
-  return (
-    <Layout>
-      {/* Hero Section */}
-      <section className="relative py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center">
-            <div className="mb-6">
-              <span className="inline-block px-6 py-2 bg-primary/5 text-primary rounded-full text-sm font-medium tracking-wide">
-                WELCOME TO DORAEMON
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 max-w-4xl">
-              Building the Future of <span className="text-primary">Digital Innovation</span>
-            </h1>
-            <div className="w-24 h-1 bg-primary mb-8"></div>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed mb-12">
-              We are a team of passionate developers, designers, and innovators dedicated to creating exceptional digital experiences that transform businesses and delight users.
-            </p>
-            <a 
-              href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 group"
-            >
-              <span>Watch Our Story</span>
-              <FaPlay className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
+  // Timeline component with moving dot animation
+  const StoryTimeline = ({ timeline }) => {
+    const [activeStep, setActiveStep] = useState(0);
+    const [completedSteps, setCompletedSteps] = useState(new Set());
+
+    useEffect(() => {
+      const handleScroll = () => {
+        const elements = timeline.map((_, index) => 
+          document.getElementById(`story-${index}`)
+        );
+        
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.6;
+
+        elements.forEach((element, index) => {
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < triggerPoint && rect.bottom > triggerPoint) {
+              setActiveStep(index);
+              const newCompletedSteps = new Set();
+              for (let i = 0; i < index; i++) {
+                newCompletedSteps.add(i);
+              }
+              setCompletedSteps(newCompletedSteps);
+            }
+          }
+        });
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, [timeline]);
+
+    return (
+      <div className="relative">
+        {/* Vertical line - left on mobile, centered on desktop */}
+        <div className="w-px bg-dark-600 absolute left-6 lg:left-1/2 top-0 bottom-0 z-10 lg:transform lg:-translate-x-1/2">
+          {/* Progress line that fills as steps are completed */}
+          <div
+            className="w-px bg-primary-gradient absolute top-0 transition-all duration-1000 ease-out"
+            style={{ 
+              height: `${(completedSteps.size / (timeline.length - 1)) * 100}%`,
+              background: 'linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%)'
+            }}
+          />
+        </div>
+
+        {/* Moving dot that travels along the timeline */}
+        <div
+          className="absolute left-6 lg:left-1/2 z-30 transition-all duration-1000 ease-out lg:transform lg:-translate-x-1/2"
+          style={{ 
+            top: `${(activeStep / (timeline.length - 1)) * 100}%`,
+            transform: 'translateX(-50%) translateY(-50%)'
+          }}
+        >
+          <div className="w-4 h-4 bg-primary-gradient rounded-full shadow-lg shadow-primary-500/50 animate-pulse">
+            <div className="w-full h-full bg-primary-gradient rounded-full animate-ping opacity-75"></div>
           </div>
         </div>
-      </section>
 
-      {/* Story Section */}
-      <section className="py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50/50"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid md:grid-cols-2 gap-20 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-                  Our <span className="text-primary">Story</span>
-                </h2>
-                <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+        {/* Individual dots for each story point */}
+        {timeline.map((_, index) => (
+          <div
+            key={`dot-${index}`}
+            className="absolute left-6 lg:left-1/2 z-20 transition-all duration-700 ease-out lg:transform lg:-translate-x-1/2"
+            style={{ 
+              top: `${(index / (timeline.length - 1)) * 100}%`,
+              transform: 'translateX(-50%) translateY(-50%)'
+            }}
+          >
+            <div
+              className={`w-4 h-4 rounded-full transition-all duration-700 ease-out ${
+                completedSteps.has(index) 
+                  ? 'bg-primary-gradient shadow-lg shadow-primary-500/50 scale-110' 
+                  : 'bg-dark-600 border-2 border-dark-500'
+              }`}
+              style={{
+                animationDelay: `${index * 100}ms`,
+                animation: activeStep === index ? 'kickDot 0.6s ease-out' : 'none'
+              }}
+            />
+          </div>
+        ))}
+
+        {/* Story content */}
+        <div className="space-y-32 w-full pl-16 lg:pl-0">
+          {timeline.map((story, index) => (
+            <div
+              key={index}
+              id={`story-${index}`}
+              className={`transition-all duration-700 ease-out ${
+                completedSteps.has(index) 
+                  ? 'opacity-100 scale-100' 
+                  : activeStep === index
+                  ? 'opacity-100 scale-100'
+                  : 'opacity-50 scale-95'
+              }`}
+              style={{
+                animationDelay: `${index * 100}ms`
+              }}
+            >
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Text content */}
+                <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} order-1`}>
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 flex-shrink-0 ${
+                        completedSteps.has(index)
+                          ? 'bg-accent-gradient shadow-lg shadow-accent-500/30'
+                          : 'bg-accent-500/20'
+                      }`}>
+                        <story.icon className={`text-xl transition-colors duration-500 ${
+                          completedSteps.has(index)
+                            ? 'text-white'
+                            : 'text-accent-400'
+                        }`} />
+                      </div>
+                      <div>
+                        <div className={`text-4xl font-bold transition-colors duration-500 ${
+                          completedSteps.has(index)
+                            ? 'text-primary-400'
+                            : 'text-neutral-400'
+                        }`}>
+                          {story.year}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 className={`text-3xl font-bold mb-4 transition-colors duration-500 ${
+                      completedSteps.has(index)
+                        ? 'text-neutral-100'
+                        : 'text-neutral-400'
+                    }`}>
+                      {story.title}
+                    </h3>
+                    
+                    <p className={`text-lg leading-relaxed transition-colors duration-500 ${
+                      completedSteps.has(index)
+                        ? 'text-neutral-300'
+                        : 'text-neutral-500'
+                    }`}>
+                      {story.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Visual content */}
+                <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} order-2`}>
+                  <div className="relative">
+                    {story.visual === 'startup' && (
+                      <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 authentic-glass-card">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div className="text-neutral-400 text-sm ml-4">Soltech Startup</div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="h-8 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">Web Development</span>
+                            </div>
+                            <div className="h-8 bg-primary-gradient rounded-lg flex items-center px-4">
+                              <span className="text-sm text-white">Mobile Development</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {story.visual === 'growth' && (
+                      <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 authentic-glass-card">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div className="text-neutral-400 text-sm ml-4">Team Dashboard</div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="h-8 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">Project Management</span>
+                            </div>
+                            <div className="h-8 bg-primary-gradient rounded-lg flex items-center px-4">
+                              <span className="text-sm text-white">Team Collaboration</span>
+                            </div>
+                            <div className="h-8 bg-gradient-to-r from-accent-500/20 to-primary-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">Client Success</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {story.visual === 'innovation' && (
+                      <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 authentic-glass-card">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div className="text-neutral-400 text-sm ml-4">AI Platform</div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="h-8 bg-gradient-to-r from-accent-500/20 to-primary-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">Machine Learning</span>
+                            </div>
+                            <div className="h-8 bg-accent-gradient rounded-lg flex items-center px-4">
+                              <span className="text-sm text-white">AI Development</span>
+                            </div>
+                            <div className="h-8 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">Data Analytics</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {story.visual === 'global' && (
+                      <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 authentic-glass-card">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div className="text-neutral-400 text-sm ml-4">Global Network</div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="h-8 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">International Clients</span>
+                            </div>
+                            <div className="h-8 bg-primary-gradient rounded-lg flex items-center px-4">
+                              <span className="text-sm text-white">Worldwide Services</span>
+                            </div>
+                            <div className="h-8 bg-gradient-to-r from-accent-500/20 to-primary-500/20 rounded-lg flex items-center px-4">
+                              <span className="text-sm text-neutral-300">24/7 Support</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {story.visual === 'present' && (
+                      <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card h-64 flex items-center justify-center">
+                        {/* Glass reflection sweep */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+                        
+                        <div className="relative z-10 text-center">
+                          <div className="text-6xl font-bold text-gradient group-hover:scale-105 transition-transform duration-300">
+                            Codvex
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div className="space-y-6 text-gray-600">
-                <p className="text-lg leading-relaxed">
-                  Founded in 2024, Doraemon started with a simple mission: to help businesses transform their digital presence through innovative technology solutions.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  What began as a small team of passionate developers has grown into a full-service digital agency, serving clients across various industries with custom software solutions.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  Today, we continue to push the boundaries of what's possible in web and mobile development, always staying ahead of the curve in technology and design.
-                </p>
-              </div>
-              <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105">
-                Learn More
-                <FaArrowRight className="text-sm" />
-              </button>
             </div>
-            <div className="relative">
-              <div className="aspect-w-16 aspect-h-9 rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <img
-                  src="../assets/dora-about.png"
-                  alt="Our Team"
-                  className="object-cover w-full h-full"
-                />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <Layout>
+      {/* Hero Section - Matching Main Page Design */}
+      <div className="w-full h-screen relative bg-dark-gradient overflow-hidden flex items-center justify-center">
+        {/* Modern Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Round gradient orbs with glowing effects */}
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-primary-500/20 to-transparent rounded-full animate-modern-float animate-pulse-glow shadow-lg shadow-primary-500/30" style={{animationDelay: '0s'}}></div>
+          <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-accent-500/18 to-transparent rounded-full animate-modern-float animate-pulse-glow shadow-lg shadow-accent-500/25" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-gradient-to-br from-primary-400/25 to-transparent rounded-full animate-modern-float animate-pulse-glow shadow-lg shadow-primary-400/35" style={{animationDelay: '4s'}}></div>
+          <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-br from-accent-400/15 to-transparent rounded-full animate-modern-float animate-pulse-glow shadow-lg shadow-accent-400/20" style={{animationDelay: '1s'}}></div>
+          
+          {/* Additional round shapes with glow */}
+          <div className="absolute top-1/3 left-1/3 w-8 h-8 bg-primary-300/25 rounded-full animate-modern-pulse shadow-lg shadow-primary-300/40" style={{animationDelay: '3s'}}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-6 h-6 bg-accent-300/30 rounded-full animate-modern-pulse shadow-lg shadow-accent-300/35" style={{animationDelay: '1.5s'}}></div>
+          
+          {/* Subtle dot pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.3) 1px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
+
+        {/* Background Codvex Text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-full overflow-hidden">
+          <h1 className="text-6xl sm:text-8xl md:text-[150px] lg:text-[240px] xl:text-[320px] 2xl:text-[400px] text-center font-bold uppercase subtle-bg-text whitespace-nowrap select-none">
+            Codvex
+          </h1>
+        </div>
+
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-16">
+            <div className="flex flex-col items-center justify-center text-center space-y-12">
+              {/* Main Content */}
+              <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8" data-aos="fade-up">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-neutral-100 leading-tight">
+                  Building the Future of{" "}
+                  <span className="text-gradient">Digital Innovation</span>
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-3xl mx-auto px-4 sm:px-0">
+                  We are a team of passionate developers, designers, and innovators dedicated to creating exceptional digital experiences that transform businesses and delight users.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none">
+                  <a 
+                    href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="primary-btn group flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg glow px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
+                  >
+                    Watch Our Story
+                    <span>
+                      <FaPlay className="text-lg sm:text-2xl" />
+                    </span>
+                  </a>
+                  <button 
+                    onClick={() => {
+                      const nextSection = document.querySelector('section');
+                      if (nextSection) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="secondary-btn flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
+                  >
+                    Learn More
+                    <span>
+                      <FaArrowRight className="text-lg sm:text-2xl" />
+                    </span>
+                  </button>
+                </div>
               </div>
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
-              <div className="absolute -top-8 -left-8 w-24 h-24 bg-secondary/10 rounded-full blur-2xl"></div>
+
+              {/* Stats Section */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto w-full px-4 sm:px-0" data-aos="fade-up" data-aos-delay="200">
+                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+                  {/* Glass reflection sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">50+</div>
+                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Projects Completed</div>
+                  </div>
+                </div>
+                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+                  {/* Glass reflection sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">30+</div>
+                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Happy Clients</div>
+                  </div>
+                </div>
+                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+                  {/* Glass reflection sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">4+</div>
+                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Years Experience</div>
+                  </div>
+                </div>
+                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+                  {/* Glass reflection sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">24/7</div>
+                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Support</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Scroll Down Arrow - Matching Main Page Design */}
+        <div className="absolute bottom-16 sm:bottom-8 left-0 right-0">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="600"
+            data-aos-offset="0"
+            className="flex flex-col items-center gap-4"
+          >
+            {/* Company Info - Hidden on mobile */}
+            <div className="text-center hidden sm:block">
+              <p className="text-neutral-300 font-medium">Global AI Solutions</p>
+            </div>
+
+            {/* Scroll Button */}
+            <button 
+              onClick={() => {
+                const nextSection = document.querySelector('section');
+                if (nextSection) {
+                  nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="hover:scale-110 transition-transform duration-300 p-2 group"
+              aria-label="Scroll to next section"
+            >
+              <div className="animate-bounce">
+                <div className="w-12 h-12 rounded-full bg-primary-500/20 backdrop-blur-sm border border-primary-500/30 flex items-center justify-center group-hover:bg-primary-500/30 transition-colors duration-300">
+                  <FaArrowDown className="text-xl text-primary-400 group-hover:text-primary-300" />
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Our Story Timeline Section */}
+      <section className="section-padding relative bg-dark-800/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="inline-block px-4 py-2 bg-primary-500/20 text-primary-400 rounded-full text-sm font-semibold">
+                Our Journey
+              </span>
+            </div>
+            <h2 className="heading-2 mb-6">
+              Our <span className="text-gradient">Story</span>
+            </h2>
+            <p className="body-text-lg max-w-3xl mx-auto">
+              From humble beginnings to global expansion, discover the milestones that shaped our company's journey.
+            </p>
+          </div>
+          
+          <StoryTimeline timeline={storyTimeline} />
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-32 bg-gradient-to-b from-gray-50/50 to-white">
+      <section className="section-padding bg-dark-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block mb-4">
-              <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">
+              <span className="inline-block px-4 py-2 bg-primary-500/20 text-primary-400 rounded-full text-sm font-semibold">
                 Our Values
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              What We <span className="text-primary">Stand For</span>
+            <h2 className="heading-2 mb-6">
+              What We <span className="text-gradient">Stand For</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="body-text-lg max-w-3xl mx-auto">
               These core values guide everything we do and shape our company culture.
             </p>
           </div>
@@ -121,41 +517,63 @@ const AboutUs = () => {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card"
               >
-                <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  {value.icon}
+                {/* Glass reflection sweep */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+                
+                <div className="relative z-10">
+                  <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-white/95 mb-4 group-hover:text-white transition-colors duration-400">{value.title}</h3>
+                  <p className="text-white/80 leading-relaxed group-hover:text-white/90 transition-colors duration-400">{value.description}</p>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <Team />
-
       {/* Stats Section */}
-      <section className="py-32 bg-gradient-to-b from-white to-gray-50/50">
+      <section className="py-32 bg-dark-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="text-5xl font-bold text-primary mb-4">50+</div>
-              <div className="text-xl text-gray-600">Projects Completed</div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+              {/* Glass reflection sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+              
+              <div className="relative z-10 text-center">
+                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">50+</div>
+                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Projects Completed</div>
+              </div>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="text-5xl font-bold text-primary mb-4">30+</div>
-              <div className="text-xl text-gray-600">Happy Clients</div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+              {/* Glass reflection sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+              
+              <div className="relative z-10 text-center">
+                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">30+</div>
+                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Happy Clients</div>
+              </div>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="text-5xl font-bold text-primary mb-4">15+</div>
-              <div className="text-xl text-gray-600">Team Members</div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+              {/* Glass reflection sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+              
+              <div className="relative z-10 text-center">
+                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">15+</div>
+                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Developers</div>
+              </div>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="text-5xl font-bold text-primary mb-4">5+</div>
-              <div className="text-xl text-gray-600">Years Experience</div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
+              {/* Glass reflection sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
+              
+              <div className="relative z-10 text-center">
+                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">4+</div>
+                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Years Experience</div>
+              </div>
             </div>
           </div>
         </div>

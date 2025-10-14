@@ -9,15 +9,17 @@ const FAQ = ({ faqs }) => {
       {faqs.map((faq, index) => (
         <div
           key={index}
-          className="bg-white rounded-xl overflow-hidden shadow-sm border"
+          className={`card overflow-hidden transition-all duration-300 ${
+            activeIndex === index ? 'scale-105' : 'scale-100'
+          }`}
         >
           <button
-            className="w-full p-6 flex items-center justify-between"
+            className="w-full py-2 px-4 flex items-center justify-between"
             onClick={() => setActiveIndex(activeIndex === index ? null : index)}
           >
-            <h3 className="text-lg font-semibold text-left">{faq.question}</h3>
+            <h3 className="text-lg font-semibold text-neutral-100 text-left">{faq.question}</h3>
             <FaChevronDown
-              className={`text-primary transition-transform duration-300 ${
+              className={`text-primary-500 transition-transform duration-300 ${
                 activeIndex === index ? 'rotate-180' : ''
               }`}
             />
@@ -28,8 +30,8 @@ const FAQ = ({ faqs }) => {
               activeIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             } overflow-hidden`}
           >
-            <div className="p-6 pt-0">
-              <p className="text-gray-600">{faq.answer}</p>
+            <div className="p-4 pt-0">
+              <p className="text-sm text-neutral-300 leading-relaxed">{faq.answer}</p>
             </div>
           </div>
         </div>

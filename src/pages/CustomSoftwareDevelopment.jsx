@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ServiceTemplate from './ServiceTemplate';
 import doraAboutImage from '../assets/dora-about.png';
 import { FaCode, FaRocket, FaShieldAlt, FaUsers } from 'react-icons/fa';
@@ -95,22 +95,22 @@ const serviceData = {
   ],
   projects: [
     {
-      title: "Enterprise Management System",
-      description: "Custom enterprise management system for a manufacturing company.",
-      image: "/images/project-enterprise.jpg",
-      link: "#"
+      title: "Real Estate Property Search",
+      category: "Real Estate",
+      imageSet: 'c',
+      description: "Advanced property finder app with location-based search, interactive maps, and personalized home recommendations."
     },
     {
-      title: "Healthcare Platform",
-      description: "Secure healthcare management platform with HIPAA compliance.",
-      image: "/images/project-healthcare.jpg",
-      link: "#"
+      title: "Car Rental Booking App",
+      category: "Transportation",
+      imageSet: 'k',
+      description: "Premium car rental service with simple booking process, instant confirmation, and luxury vehicle selection for travelers."
     },
     {
-      title: "Financial Analytics Tool",
-      description: "Advanced financial analytics platform for investment firms.",
-      image: "/images/project-finance.jpg",
-      link: "#"
+      title: "Grocery Shopping App",
+      category: "E-commerce",
+      imageSet: 'i',
+      description: "Modern grocery shopping platform featuring fresh produce, real-time inventory, promotions, and intuitive cart management for convenient online shopping."
     }
   ],
   faqs: [
@@ -138,6 +138,10 @@ const serviceData = {
 };
 
 const CustomSoftwareDevelopment = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
   return <ServiceTemplate serviceData={serviceData} />;
 };
 

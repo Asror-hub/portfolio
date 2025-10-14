@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { GiAtomicSlashes } from "react-icons/gi";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MdArrowDropDown } from "react-icons/md";
 import { useLanguage } from "../../context/LanguageContext";
 
 const ServiceLinks = [
-  {
-    name: "Custom Software Development",
-    link: "/services/custom-software-development",
-  },
   {
     name: "Mobile App Development",
     link: "/services/mobile-app-development",
@@ -17,6 +12,10 @@ const ServiceLinks = [
   {
     name: "Web App Development",
     link: "/services/web-app-development",
+  },
+  {
+    name: "Custom Software Development",
+    link: "/services/custom-software-development",
   },
   {
     name: "AI Development",
@@ -30,36 +29,24 @@ const ServiceLinks = [
     name: "Android Development",
     link: "/services/android-development",
   },
-  {
-    name: "AI Chatbot Development",
-    link: "/services/ai-chatbot-development",
-  },
 ];
 
 const IndustryLinks = [
   {
-    name: "Healthcare",
-    link: "/industries/healthcare",
+    name: "E-commerce",
+    link: "/industries/e-commerce",
   },
   {
-    name: "Finance",
-    link: "/industries/finance",
+    name: "Real Estate",
+    link: "/industries/real-estate",
   },
   {
     name: "Education",
     link: "/industries/education",
   },
   {
-    name: "Retail",
-    link: "/industries/retail",
-  },
-  {
-    name: "Manufacturing",
-    link: "/industries/manufacturing",
-  },
-  {
-    name: "Real Estate",
-    link: "/industries/real-estate",
+    name: "Finance",
+    link: "/industries/finance",
   },
 ];
 
@@ -72,10 +59,10 @@ const MenuLinks = [
     name: "Projects",
     link: "/projects",
   },
-  {
-    name: "Solutions",
-    link: "/solutions",
-  },
+  // {
+  //   name: "Solutions",
+  //   link: "/solutions",
+  // },
   {
     name: "Blog",
     link: "/blog",
@@ -83,14 +70,15 @@ const MenuLinks = [
 ];
 
 const Navbar = () => {
-  const { language, changeLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const [showIndustriesDropdown, setShowIndustriesDropdown] = useState(false);
-  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showMobileServices, setShowMobileServices] = useState(false);
   const [showMobileIndustries, setShowMobileIndustries] = useState(false);
+  const [servicesTimeout, setServicesTimeout] = useState(null);
+  const [industriesTimeout, setIndustriesTimeout] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -112,6 +100,58 @@ const Navbar = () => {
     setShowMobileServices(false);
     setShowMobileIndustries(false);
   }, [location]);
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (servicesTimeout) clearTimeout(servicesTimeout);
+      if (industriesTimeout) clearTimeout(industriesTimeout);
+    };
+  }, [servicesTimeout, industriesTimeout]);
+
+  const handleServicesMouseEnter = () => {
+    // Clear any existing timeouts
+    if (servicesTimeout) {
+      clearTimeout(servicesTimeout);
+      setServicesTimeout(null);
+    }
+    if (industriesTimeout) {
+      clearTimeout(industriesTimeout);
+      setIndustriesTimeout(null);
+    }
+    // Close other dropdown immediately
+    setShowIndustriesDropdown(false);
+    setShowServicesDropdown(true);
+  };
+
+  const handleServicesMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowServicesDropdown(false);
+    }, 150);
+    setServicesTimeout(timeout);
+  };
+
+  const handleIndustriesMouseEnter = () => {
+    // Clear any existing timeouts
+    if (industriesTimeout) {
+      clearTimeout(industriesTimeout);
+      setIndustriesTimeout(null);
+    }
+    if (servicesTimeout) {
+      clearTimeout(servicesTimeout);
+      setServicesTimeout(null);
+    }
+    // Close other dropdown immediately
+    setShowServicesDropdown(false);
+    setShowIndustriesDropdown(true);
+  };
+
+  const handleIndustriesMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowIndustriesDropdown(false);
+    }, 150);
+    setIndustriesTimeout(timeout);
+  };
 
   const scrollToElement = (elementId) => {
     const element = document.getElementById(elementId);
@@ -156,146 +196,182 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg' : ''}`}>
-      <div data-aos="fade-down" className="px-4 md:px-8 lg:px-12 py-3">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-dark-900/95 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-primary-500/5' : 'bg-dark-900/70 backdrop-blur-lg border-b border-white/5'}`}>
+      <div data-aos="fade-down" className="px-4 md:px-8 lg:px-12 py-4">
         <div className="flex items-center justify-between">
           {/* logo section */}
-          <Link to="/" className="flex items-center gap-3">
-            <GiAtomicSlashes className="text-5xl text-primary" />
-            <div className="flex flex-col text-xl font-bold text-gray-600 leading-5">
-              <span>SOLTECH</span>
-            </div>
+          <Link to="/" className="group relative flex items-center gap-3">
+            <h1 className="text-3xl md:text-4xl font-black tracking-wider">
+              <span className="text-primary-500 group-hover:text-primary-400 transition-colors duration-300" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.05em' }}>Cod</span>
+              <span className="text-white/90 group-hover:text-white transition-colors duration-300 font-extralight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.15em' }}>vex</span>
+            </h1>
+            <div className="w-2.5 h-2.5 rounded-full bg-primary-500 group-hover:scale-125 transition-transform duration-300"></div>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:block">
-            <ul className="center">
+            <ul className="flex items-center gap-20">
               {/* Services Dropdown */}
-              <li className="relative">
+              <li className="relative group/nav">
                 <button
-                  className="navlink text-gray-600 text-base hover:text-primary transition-colors duration-300 flex items-center"
-                  onMouseEnter={() => setShowServicesDropdown(true)}
-                  onMouseLeave={() => setShowServicesDropdown(false)}
+                  className="text-neutral-300 text-base font-medium hover:text-white transition-all duration-300 flex items-center gap-1 py-2 relative"
+                  onMouseEnter={handleServicesMouseEnter}
+                  onMouseLeave={handleServicesMouseLeave}
                 >
-                  {t('services')}
-                  <MdArrowDropDown className="text-lg text-primary" />
+                  <span className="relative">{t('services')}</span>
+                  <MdArrowDropDown className="text-xl text-primary-500 group-hover/nav:text-primary-400 transition-all duration-300 group-hover/nav:translate-y-0.5" />
+                  {/* Underline animation */}
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover/nav:w-full transition-all duration-300"></div>
                 </button>
                 {showServicesDropdown && (
-                  <div
-                    className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[200px]"
-                    onMouseEnter={() => setShowServicesDropdown(true)}
-                    onMouseLeave={() => setShowServicesDropdown(false)}
-                  >
-                    {ServiceLinks.map((service, index) => (
-                      <Link
-                        key={index}
-                        to={service.link}
-                        className="block px-4 py-2 text-base text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors duration-300"
-                      >
-                        {t(service.name.toLowerCase().replace(/\s+/g, ''))}
-                      </Link>
-                    ))}
-                  </div>
+                  <>
+                    {/* Invisible bridge to prevent accidental closure */}
+                    <div className="absolute top-full left-0 w-full h-2 bg-transparent"></div>
+                    <div
+                      className="absolute top-full left-0 mt-2 bg-dark-900/98 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/50 rounded-2xl py-2 min-w-[340px] animate-in slide-in-from-top-2 duration-300 overflow-hidden"
+                      onMouseEnter={handleServicesMouseEnter}
+                      onMouseLeave={handleServicesMouseLeave}
+                    >
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-accent-500/5 pointer-events-none"></div>
+                    
+                    {/* Header */}
+                    <div className="px-5 py-3 border-b border-white/5 mb-1 relative">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse"></div>
+                        <h3 className="text-xs font-bold text-primary-400 uppercase tracking-widest">
+                          Our Services
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    {/* Service Links */}
+                    <div className="py-1">
+                      {ServiceLinks.map((service, index) => (
+                        <Link
+                          key={index}
+                          to={service.link}
+                          className="group flex items-center px-5 py-3 text-sm text-neutral-300 hover:bg-gradient-to-r hover:from-primary-500/10 hover:to-transparent hover:text-white transition-all duration-300 relative overflow-hidden"
+                        >
+                          <div className="absolute left-0 w-0.5 h-full bg-gradient-to-b from-primary-500 to-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
+                            {t(service.name.toLowerCase().replace(/\s+/g, ''))}
+                          </span>
+                          <div className="ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                            <svg className="w-3.5 h-3.5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    </div>
+                  </>
                 )}
               </li>
 
               {/* Industries Dropdown */}
-              <li className="relative">
+              <li className="relative group/nav">
                 <button
-                  className="navlink text-gray-600 text-base hover:text-primary transition-colors duration-300 flex items-center"
-                  onMouseEnter={() => setShowIndustriesDropdown(true)}
-                  onMouseLeave={() => setShowIndustriesDropdown(false)}
+                  className="text-neutral-300 text-base font-medium hover:text-white transition-all duration-300 flex items-center gap-1 py-2 relative"
+                  onMouseEnter={handleIndustriesMouseEnter}
+                  onMouseLeave={handleIndustriesMouseLeave}
                 >
-                  {t('industries')}
-                  <MdArrowDropDown className="text-lg text-primary" />
+                  <span className="relative">{t('industries')}</span>
+                  <MdArrowDropDown className="text-xl text-accent-500 group-hover/nav:text-accent-400 transition-all duration-300 group-hover/nav:translate-y-0.5" />
+                  {/* Underline animation */}
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-500 to-primary-500 group-hover/nav:w-full transition-all duration-300"></div>
                 </button>
                 {showIndustriesDropdown && (
-                  <div
-                    className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[200px]"
-                    onMouseEnter={() => setShowIndustriesDropdown(true)}
-                    onMouseLeave={() => setShowIndustriesDropdown(false)}
-                  >
-                    {IndustryLinks.map((industry, index) => (
-                      <Link
-                        key={index}
-                        to={industry.link}
-                        className="block px-4 py-2 text-base text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors duration-300"
-                      >
-                        {t(industry.name.toLowerCase())}
-                      </Link>
-                    ))}
-                  </div>
+                  <>
+                    {/* Invisible bridge to prevent accidental closure */}
+                    <div className="absolute top-full left-0 w-full h-2 bg-transparent"></div>
+                    <div
+                      className="absolute top-full left-0 mt-2 bg-dark-900/98 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/50 rounded-2xl py-2 min-w-[340px] animate-in slide-in-from-top-2 duration-300 overflow-hidden"
+                      onMouseEnter={handleIndustriesMouseEnter}
+                      onMouseLeave={handleIndustriesMouseLeave}
+                    >
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 via-transparent to-primary-500/5 pointer-events-none"></div>
+                    
+                    {/* Header */}
+                    <div className="px-5 py-3 border-b border-white/5 mb-1 relative">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-accent-500 rounded-full animate-pulse"></div>
+                        <h3 className="text-xs font-bold text-accent-400 uppercase tracking-widest">
+                          Industries
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    {/* Industry Links */}
+                    <div className="py-1">
+                      {IndustryLinks.map((industry, index) => (
+                        <Link
+                          key={index}
+                          to={industry.link}
+                          className="group flex items-center px-5 py-3 text-sm text-neutral-300 hover:bg-gradient-to-r hover:from-accent-500/10 hover:to-transparent hover:text-white transition-all duration-300 relative overflow-hidden"
+                        >
+                          <div className="absolute left-0 w-0.5 h-full bg-gradient-to-b from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
+                            {t(industry.name.toLowerCase())}
+                          </span>
+                          <div className="ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                            <svg className="w-3.5 h-3.5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    </div>
+                  </>
                 )}
               </li>
 
               {/* Other Menu Links */}
               {MenuLinks.map((data, index) => (
-                <li key={index}>
+                <li key={index} className="relative group/nav">
                   <Link
-                    className="navlink text-gray-600 text-base hover:text-primary transition-colors duration-300"
+                    className="text-neutral-300 text-base font-medium hover:text-white transition-all duration-300 py-2 relative inline-block"
                     to={data.link}
                     onClick={(e) => handleScroll(e, data.link)}
                   >
-                    {t(data.name.toLowerCase())}
+                    <span>{t(data.name.toLowerCase())}</span>
+                    {/* Underline animation */}
+                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover/nav:w-full transition-all duration-300"></div>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Right section with language and contact */}
+          {/* Right section with contact */}
           <div className="flex items-center gap-4">
             <Link
               to="/#contact"
               onClick={(e) => handleScroll(e, "/#contact")}
-              className="hidden sm:block primary-btn text-base px-6 py-2 rounded-lg hover:scale-105 transition-all duration-300"
+              className="hidden sm:flex items-center gap-2 primary-btn text-sm font-semibold px-6 py-2.5 rounded-xl glow group relative overflow-hidden"
             >
-              {t('contact')}
+              <span className="relative z-10">{t('contact')}</span>
+              <svg className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </Link>
-            
-            {/* Language Selector */}
-            <div className="relative">
-              <button
-                className="hidden sm:flex center navlink cursor-pointer text-gray-600 text-base"
-                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-              >
-                {language === 'en' ? 'Eng' : 'Рус'}
-                <MdArrowDropDown className="text-lg text-primary" />
-              </button>
-              {showLanguageDropdown && (
-                <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[100px]">
-                  <button
-                    className="block w-full px-4 py-2 text-left text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors duration-300"
-                    onClick={() => {
-                      changeLanguage('en');
-                      setShowLanguageDropdown(false);
-                    }}
-                  >
-                    English
-                  </button>
-                  <button
-                    className="block w-full px-4 py-2 text-left text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors duration-300"
-                    onClick={() => {
-                      changeLanguage('ru');
-                      setShowLanguageDropdown(false);
-                    }}
-                  >
-                    Русский
-                  </button>
-                </div>
-              )}
-            </div>
             
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+              className="lg:hidden p-2.5 hover:bg-white/10 rounded-xl transition-all duration-300 relative group"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
               {isMobileMenuOpen ? (
-                <FaTimes className="text-2xl text-primary transition-transform duration-300" />
+                <FaTimes className="text-2xl text-primary-500 relative z-10 group-hover:rotate-90 transition-transform duration-300" />
               ) : (
-                <FaBars className="text-2xl text-primary transition-transform duration-300" />
+                <FaBars className="text-2xl text-primary-500 relative z-10 group-hover:scale-110 transition-transform duration-300" />
               )}
             </button>
           </div>
@@ -303,132 +379,143 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 z-[60] ${
+          className={`lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 z-[60] ${
             isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className={`fixed right-0 top-0 h-screen w-[300px] bg-white transform transition-transform duration-300 ease-out shadow-xl ${
+            className={`fixed right-0 top-0 h-screen w-[320px] bg-dark-900/98 backdrop-blur-2xl border-l border-white/10 transform transition-transform duration-300 ease-out shadow-2xl ${
               isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-accent-500/5 pointer-events-none"></div>
+            
             <div className="relative p-6 overflow-y-auto h-full">
               {/* Close button at the top */}
               <button
-                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+                className="absolute top-4 right-4 p-2.5 hover:bg-white/10 rounded-xl transition-all duration-300 group"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close menu"
               >
-                <FaTimes className="text-2xl text-primary" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                <FaTimes className="text-2xl text-primary-500 relative z-10 group-hover:rotate-90 transition-transform duration-300" />
               </button>
 
               {/* Add some top padding to account for close button */}
-              <div className="pt-8">
+              <div className="pt-10">
                 {/* Mobile Services Dropdown */}
                 <div className="mb-4">
                   <button
-                    className="flex items-center justify-between w-full px-4 py-2 text-gray-600 hover:text-primary transition-colors duration-300"
+                    className="flex items-center justify-between w-full px-5 py-3.5 bg-white/5 backdrop-blur-sm rounded-xl text-neutral-300 hover:text-white hover:bg-white/10 transition-all duration-300 group border border-white/5 hover:border-primary-500/30 relative overflow-hidden"
                     onClick={() => setShowMobileServices(!showMobileServices)}
                   >
-                    <span>{t('services')}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="flex items-center relative z-10">
+                      <div className="w-2 h-2 bg-primary-500 rounded-full mr-3 group-hover:animate-pulse"></div>
+                      <span className="font-semibold">{t('services')}</span>
+                    </div>
                     <MdArrowDropDown
-                      className={`text-xl text-primary transform transition-transform duration-300 ${
+                      className={`text-xl text-primary-500 group-hover:text-primary-400 relative z-10 transform transition-transform duration-300 ${
                         showMobileServices ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      showMobileServices ? 'max-h-[500px]' : 'max-h-0'
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      showMobileServices ? 'max-h-[500px] mt-2' : 'max-h-0'
                     }`}
                   >
-                    {ServiceLinks.map((service, index) => (
-                      <Link
-                        key={index}
-                        to={service.link}
-                        className="block px-8 py-2 text-base text-gray-600 hover:text-primary transition-colors duration-300"
-                      >
-                        {t(service.name.toLowerCase().replace(/\s+/g, ''))}
-                      </Link>
-                    ))}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-2 space-y-1 border border-white/5">
+                      {ServiceLinks.map((service, index) => (
+                        <Link
+                          key={index}
+                          to={service.link}
+                          className="group flex items-center px-4 py-3 text-sm text-neutral-300 hover:text-white hover:bg-primary-500/10 rounded-lg transition-all duration-300 relative overflow-hidden"
+                        >
+                          <div className="absolute left-0 w-1 h-full bg-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
+                            {t(service.name.toLowerCase().replace(/\s+/g, ''))}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Mobile Industries Dropdown */}
                 <div className="mb-4">
                   <button
-                    className="flex items-center justify-between w-full px-4 py-2 text-gray-600 hover:text-primary transition-colors duration-300"
+                    className="flex items-center justify-between w-full px-5 py-3.5 bg-white/5 backdrop-blur-sm rounded-xl text-neutral-300 hover:text-white hover:bg-white/10 transition-all duration-300 group border border-white/5 hover:border-accent-500/30 relative overflow-hidden"
                     onClick={() => setShowMobileIndustries(!showMobileIndustries)}
                   >
-                    <span>{t('industries')}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="flex items-center relative z-10">
+                      <div className="w-2 h-2 bg-accent-500 rounded-full mr-3 group-hover:animate-pulse"></div>
+                      <span className="font-semibold">{t('industries')}</span>
+                    </div>
                     <MdArrowDropDown
-                      className={`text-xl text-primary transform transition-transform duration-300 ${
+                      className={`text-xl text-accent-500 group-hover:text-accent-400 relative z-10 transform transition-transform duration-300 ${
                         showMobileIndustries ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      showMobileIndustries ? 'max-h-[500px]' : 'max-h-0'
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      showMobileIndustries ? 'max-h-[500px] mt-2' : 'max-h-0'
                     }`}
                   >
-                    {IndustryLinks.map((industry, index) => (
-                      <Link
-                        key={index}
-                        to={industry.link}
-                        className="block px-8 py-2 text-base text-gray-600 hover:text-primary transition-colors duration-300"
-                      >
-                        {t(industry.name.toLowerCase())}
-                      </Link>
-                    ))}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-2 space-y-1 border border-white/5">
+                      {IndustryLinks.map((industry, index) => (
+                        <Link
+                          key={index}
+                          to={industry.link}
+                          className="group flex items-center px-4 py-3 text-sm text-neutral-300 hover:text-white hover:bg-accent-500/10 rounded-lg transition-all duration-300 relative overflow-hidden"
+                        >
+                          <div className="absolute left-0 w-1 h-full bg-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
+                            {t(industry.name.toLowerCase())}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Mobile Menu Links */}
-                {MenuLinks.map((data, index) => (
-                  <Link
-                    key={index}
-                    to={data.link}
-                    onClick={(e) => handleScroll(e, data.link)}
-                    className="block px-4 py-2 text-gray-600 hover:text-primary transition-colors duration-300"
-                  >
-                    {t(data.name.toLowerCase())}
-                  </Link>
-                ))}
+                <div className="space-y-2 mb-6">
+                  {MenuLinks.map((data, index) => (
+                    <Link
+                      key={index}
+                      to={data.link}
+                      onClick={(e) => handleScroll(e, data.link)}
+                      className="group flex items-center px-5 py-3.5 bg-white/5 backdrop-blur-sm rounded-xl text-neutral-300 hover:text-white hover:bg-white/10 transition-all duration-300 border border-white/5 hover:border-primary-500/20 relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute left-0 w-1 h-full bg-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold relative z-10">
+                        {t(data.name.toLowerCase())}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
 
                 {/* Contact Button in Mobile Menu */}
                 <Link
                   to="/#contact"
                   onClick={(e) => handleScroll(e, "/#contact")}
-                  className="block mt-4 px-4 py-2 primary-btn text-center"
+                  className="flex items-center justify-center gap-2 mt-4 px-6 py-3.5 primary-btn text-center glow rounded-xl font-semibold group relative overflow-hidden"
                 >
-                  {t('contact')}
+                  <span className="relative z-10">{t('contact')}</span>
+                  <svg className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
-
-                {/* Mobile Language Selector */}
-                <div className="mt-4 px-4 py-2">
-                  <span className="text-gray-600">{t('language')}:</span>
-                  <div className="flex gap-2 mt-2">
-                    <button
-                      className={`px-3 py-1 rounded ${
-                        language === 'en' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'
-                      }`}
-                      onClick={() => changeLanguage('en')}
-                    >
-                      English
-                    </button>
-                    <button
-                      className={`px-3 py-1 rounded ${
-                        language === 'ru' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'
-                      }`}
-                      onClick={() => changeLanguage('ru')}
-                    >
-                      Русский
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

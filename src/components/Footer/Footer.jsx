@@ -4,26 +4,26 @@ import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaMapMarkerAlt } from 'rea
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-dark-950 border-t border-dark-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold">SOLTECH</h3>
-            <p className="text-gray-400">
+            <h3 className="text-2xl font-bold text-gradient">Codvex</h3>
+            <p className="body-text">
               Building the future of digital innovation through cutting-edge technology solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors duration-300 hover:scale-110">
                 <FaLinkedin className="text-xl" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors duration-300 hover:scale-110">
                 <FaGithub className="text-xl" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors duration-300 hover:scale-110">
                 <FaTwitter className="text-xl" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors duration-300 hover:scale-110">
                 <FaEnvelope className="text-xl" />
               </a>
             </div>
@@ -31,65 +31,65 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
+            <h4 className="heading-3 mb-6">Quick Links</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
+                <Link to="/" className="body-text hover:text-primary-400 transition-colors duration-300">Home</Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
+                <Link to="/about" className="body-text hover:text-primary-400 transition-colors duration-300">About Us</Link>
               </li>
               <li>
-                <Link to="/#services" className="text-gray-400 hover:text-white transition-colors">Services</Link>
+                <Link to="/#services" className="body-text hover:text-primary-400 transition-colors duration-300">Services</Link>
               </li>
               <li>
-                <Link to="/projects" className="text-gray-400 hover:text-white transition-colors">Projects</Link>
+                <Link to="/projects" className="body-text hover:text-primary-400 transition-colors duration-300">Projects</Link>
               </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">Services</h4>
+            <h4 className="heading-3 mb-6">Services</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/services/web-app-development" className="text-gray-400 hover:text-white transition-colors">Web Development</Link>
+                <Link to="/services/web-app-development" className="body-text hover:text-primary-400 transition-colors duration-300">Web Development</Link>
               </li>
               <li>
-                <Link to="/services/mobile-app-development" className="text-gray-400 hover:text-white transition-colors">Mobile Apps</Link>
+                <Link to="/services/mobile-app-development" className="body-text hover:text-primary-400 transition-colors duration-300">Mobile Apps</Link>
               </li>
               <li>
-                <Link to="/services/ai-development" className="text-gray-400 hover:text-white transition-colors">AI Development</Link>
+                <Link to="/services/ai-development" className="body-text hover:text-primary-400 transition-colors duration-300">AI Development</Link>
               </li>
               <li>
-                <Link to="/services/custom-software-development" className="text-gray-400 hover:text-white transition-colors">Custom Software</Link>
+                <Link to="/services/custom-software-development" className="body-text hover:text-primary-400 transition-colors duration-300">Custom Software</Link>
               </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">Contact Info</h4>
+            <h4 className="heading-3 mb-6">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <FaEnvelope className="text-primary mt-1" />
-                <span className="text-gray-400">info@doraemon.com</span>
+                <FaEnvelope className="text-primary-500 mt-1" />
+                <span className="body-text">info@soltech.com</span>
               </li>
               <li className="flex items-start space-x-3">
-                <FaEnvelope className="text-primary mt-1" />
-                <span className="text-gray-400">support@doraemon.com</span>
+                <FaEnvelope className="text-primary-500 mt-1" />
+                <span className="body-text">support@soltech.com</span>
               </li>
               <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-primary mt-1" />
-                <span className="text-gray-400">123 Doraemon Street, Tokyo, Japan</span>
+                <FaMapMarkerAlt className="text-primary-500 mt-1" />
+                <span className="body-text">123 Innovation Drive, Tech City, CA 90210</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Doraemon. All rights reserved.</p>
+        <div className="border-t border-dark-700 mt-12 pt-8 text-center">
+          <p className="body-text">&copy; {new Date().getFullYear()} Codvex. All rights reserved.</p>
         </div>
       </div>
     </footer>

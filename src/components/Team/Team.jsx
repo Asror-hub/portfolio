@@ -130,11 +130,18 @@ const Team = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="section-padding bg-dark-800/30">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl font-bold mb-4">
-            Meet some of our <span className="text-primary">120+ team members</span>
+        <div className="text-left mb-16" data-aos="fade-up">
+          <div className="flex items-center mb-6">
+            <div className="w-6 h-6 border border-primary-500/30 rounded-full flex items-center justify-center">
+              <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+            </div>
+            <div className="w-40 h-px bg-gradient-to-r from-primary-500 to-accent-500 ml-3"></div>
+            <div className="w-1 h-1 bg-accent-500 rounded-full"></div>
+          </div>
+          <h2 className="heading-2 mb-4">
+            Meet some of our <span className="text-gradient">120+ team members</span>
           </h2>
         </div>
 
@@ -143,7 +150,7 @@ const Team = () => {
           {/* Left scroll button */}
           <button
             onClick={() => scroll('left')}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-primary hover:bg-white transition-all duration-200 ${
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-dark-800/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-primary-400 hover:bg-primary-500 hover:text-white transition-all duration-200 ${
               showLeftButton ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
             aria-label="Scroll left"
@@ -154,7 +161,7 @@ const Team = () => {
           {/* Right scroll button */}
           <button
             onClick={() => scroll('right')}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-primary hover:bg-white transition-all duration-200 ${
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-dark-800/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-primary-400 hover:bg-primary-500 hover:text-white transition-all duration-200 ${
               showRightButton ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
             aria-label="Scroll right"
@@ -177,44 +184,47 @@ const Team = () => {
               {teamMembers.map((member, index) => (
                 <div
                   key={index}
-                  className="w-[280px] bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 select-none"
+                  className="w-[280px] relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl select-none group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card"
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
+                  {/* Glass reflection sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
                   {/* Image container */}
-                  <div className="h-[200px] rounded-t-xl overflow-hidden">
+                  <div className="h-[200px] rounded-t-xl overflow-hidden relative">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       draggable="false"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 to-transparent"></div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  <div className="p-6 relative z-10">
+                    <h3 className="text-lg font-semibold text-white/95 mb-2 group-hover:text-white transition-colors duration-400">
                       {member.name}
                     </h3>
-                    <p className="text-primary font-medium mb-2">{member.role}</p>
+                    <p className="text-primary-400 font-medium mb-2 group-hover:text-primary-300 transition-colors duration-400">{member.role}</p>
                     {member.experience && (
-                      <p className="text-sm text-gray-500 mb-4">
+                      <p className="text-sm text-white/70 mb-4 group-hover:text-white/80 transition-colors duration-400">
                         {member.experience}
                       </p>
                     )}
-                    <p className="text-gray-600 text-sm mb-6">{member.bio}</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-6 group-hover:text-white/90 transition-colors duration-400">{member.bio}</p>
 
                     {/* Social links */}
                     <div className="flex gap-4">
                       <a
                         href={member.links.linkedin}
-                        className="text-gray-600 hover:text-primary transition-colors"
+                        className="text-white/60 hover:text-primary-400 transition-colors duration-300 hover:scale-110"
                       >
                         <FaLinkedin className="text-xl" />
                       </a>
                       <a
                         href={member.links.github}
-                        className="text-gray-600 hover:text-primary transition-colors"
+                        className="text-white/60 hover:text-primary-400 transition-colors duration-300 hover:scale-110"
                       >
                         <FaGithub className="text-xl" />
                       </a>
@@ -227,7 +237,7 @@ const Team = () => {
         </div>
 
         {/* Mobile scroll indicator */}
-        <div className="mt-6 flex justify-center gap-2 lg:hidden">
+        <div className="mt-6 flex justify-start gap-2 lg:hidden">
           <div className="w-16 h-1 bg-primary/30 rounded-full"></div>
           <div className="w-6 h-1 bg-primary rounded-full"></div>
           <div className="w-6 h-1 bg-primary/30 rounded-full"></div>

@@ -1,3 +1,5 @@
+import webImage from '../assets/web.png';
+
 // Staff Augmentation Data
 export const staffAugmentationData = {
   title: "Staff Augmentation",
@@ -73,22 +75,22 @@ export const staffAugmentationData = {
   ],
   projects: [
     {
-      title: "Enterprise Team Extension",
-      description: "Provided a team of 15 developers for a large-scale digital transformation project.",
-      image: "/images/project-team1.jpg",
-      link: "#"
+      title: "Food Delivery Mobile App",
+      category: "Food & Delivery",
+      imageSet: 'a',
+      description: "Complete pizza ordering and restaurant delivery app with menu browsing, customization options, and seamless checkout experience."
     },
     {
-      title: "Startup Scale-up",
-      description: "Helped a startup scale their development team from 5 to 20 in three months.",
-      image: "/images/project-team2.jpg",
-      link: "#"
+      title: "Fitness Tracking App",
+      category: "Health & Fitness",
+      imageSet: 'd',
+      description: "Comprehensive workout tracking app with personalized exercise routines, progress monitoring, video demonstrations, and daily fitness goals."
     },
     {
-      title: "Specialized Team Formation",
-      description: "Assembled a specialized team of AI/ML experts for a research project.",
-      image: "/images/project-team3.jpg",
-      link: "#"
+      title: "Grocery Shopping App",
+      category: "E-commerce",
+      imageSet: 'i',
+      description: "Modern grocery shopping platform featuring fresh produce, real-time inventory, promotions, and intuitive cart management for convenient online shopping."
     }
   ],
   faqs: [
@@ -126,17 +128,17 @@ export const webAppData = {
     { title: "Performance Optimization", description: "Implementing best practices for fast loading and smooth user experience." },
     { title: "Security First", description: "Following strict security protocols to protect your application and user data." },
   ],
-  approachImage: "/images/web-app-dev.jpg",
+  approachImage: webImage,
   technologies: [
     {
       id: 1,
       title: "Frontend Technologies",
       description: "Modern frontend frameworks and libraries for dynamic user interfaces.",
       stack: [
-        { name: "React" },
-        { name: "Next.js" },
-        { name: "TypeScript" },
-        { name: "Tailwind CSS" },
+        { name: "React", icon: "SiReact" },
+        { name: "Next.js", icon: "SiNodedotjs" },
+        { name: "TypeScript", icon: "SiNodedotjs" },
+        { name: "Tailwind CSS", icon: "SiReact" },
       ]
     },
     {
@@ -144,10 +146,10 @@ export const webAppData = {
       title: "Backend Technologies",
       description: "Robust backend solutions for reliable application performance.",
       stack: [
-        { name: "Node.js" },
-        { name: "Express" },
-        { name: "Django" },
-        { name: "Laravel" },
+        { name: "Node.js", icon: "SiNodedotjs" },
+        { name: "Express", icon: "SiNodedotjs" },
+        { name: "Django", icon: "SiDjango" },
+        { name: "Laravel", icon: "SiLaravel" },
       ]
     },
     {
@@ -155,10 +157,10 @@ export const webAppData = {
       title: "Cloud & DevOps",
       description: "Modern cloud infrastructure and deployment solutions.",
       stack: [
-        { name: "AWS" },
-        { name: "Docker" },
-        { name: "Kubernetes" },
-        { name: "CI/CD" },
+        { name: "AWS", icon: "SiAmazonaws" },
+        { name: "Docker", icon: "SiDocker" },
+        { name: "Kubernetes", icon: "SiKubernetes" },
+        { name: "CI/CD", icon: "SiDocker" },
       ]
     }
   ],
@@ -190,22 +192,22 @@ export const webAppData = {
   ],
   projects: [
     {
-      title: "E-commerce Platform",
-      description: "Full-featured e-commerce platform with advanced product management and analytics.",
-      image: "/images/project-ecommerce-web.jpg",
-      link: "#"
+      title: "Furniture Shopping Platform",
+      category: "E-commerce",
+      imageSet: 'e',
+      description: "Premium furniture shopping app featuring modern designs, room transformations, and curated collections for home decor."
     },
     {
-      title: "SaaS Dashboard",
-      description: "Complex dashboard application for data visualization and business analytics.",
-      image: "/images/project-saas.jpg",
-      link: "#"
+      title: "AR Furniture Visualizer",
+      category: "Technology",
+      imageSet: 'f',
+      description: "Augmented reality furniture visualization app allowing users to see furniture in their space before purchasing."
     },
     {
-      title: "Learning Management System",
-      description: "Interactive learning platform with real-time collaboration features.",
-      image: "/images/project-lms.jpg",
-      link: "#"
+      title: "Fashion E-commerce App",
+      category: "Fashion & Retail",
+      imageSet: 'j',
+      description: "Clothing and fashion shopping platform with detailed product views, color/size selection, reviews, and seamless checkout."
     }
   ],
   faqs: [
@@ -307,22 +309,22 @@ export const aiInfusionData = {
   ],
   projects: [
     {
-      title: "Smart Document Processing",
-      description: "AI-powered document analysis and processing system for a financial institution.",
-      image: "/images/project-ai-doc.jpg",
-      link: "#"
+      title: "Healthy Meal Planner App",
+      category: "Food & Health",
+      imageSet: 'b',
+      description: "Meal customization platform for creating perfect salads with favorite toppings and dressings tailored to your preferences."
     },
     {
-      title: "Predictive Maintenance",
-      description: "Machine learning system for predictive equipment maintenance in manufacturing.",
-      image: "/images/project-ai-maintenance.jpg",
-      link: "#"
+      title: "Pizza Ordering Platform",
+      category: "Food & Delivery",
+      imageSet: 'g',
+      description: "Specialized pizza ordering app with detailed menu, size selection, custom toppings, and real-time order tracking."
     },
     {
-      title: "Customer Service Bot",
-      description: "AI chatbot integrated with existing customer service platform.",
-      image: "/images/project-ai-chatbot.jpg",
-      link: "#"
+      title: "Fast Food Delivery App",
+      category: "Food & Delivery",
+      imageSet: 'h',
+      description: "Quick burger and fast food delivery platform promising 15-30 minute delivery with fresh ingredients and quality service."
     }
   ],
   faqs: [
@@ -439,22 +441,22 @@ export const blockchainData = {
   ],
   projects: [
     {
-      title: "Supply Chain Tracking",
-      description: "Blockchain-based supply chain tracking system for a logistics company.",
-      image: "/images/project-blockchain-supply.jpg",
-      link: "#"
+      title: "Real Estate Property Search",
+      category: "Real Estate",
+      imageSet: 'c',
+      description: "Advanced property finder app with location-based search, interactive maps, and personalized home recommendations."
     },
     {
-      title: "NFT Marketplace",
-      description: "Custom NFT marketplace with advanced features and security.",
-      image: "/images/project-blockchain-nft.jpg",
-      link: "#"
+      title: "Car Rental Booking App",
+      category: "Transportation",
+      imageSet: 'k',
+      description: "Premium car rental service with simple booking process, instant confirmation, and luxury vehicle selection for travelers."
     },
     {
-      title: "DeFi Platform",
-      description: "Decentralized finance platform with multiple financial instruments.",
-      image: "/images/project-blockchain-defi.jpg",
-      link: "#"
+      title: "Furniture Shopping Platform",
+      category: "E-commerce",
+      imageSet: 'e',
+      description: "Premium furniture shopping app featuring modern designs, room transformations, and curated collections for home decor."
     }
   ],
   faqs: [
@@ -556,22 +558,22 @@ export const iosDevelopmentData = {
   ],
   projects: [
     {
-      title: "Fitness Tracker",
-      description: "Comprehensive fitness tracking app with health integration.",
-      image: "/images/project-ios-fitness.jpg",
-      link: "#"
+      title: "Fitness Tracking App",
+      category: "Health & Fitness",
+      imageSet: 'd',
+      description: "Comprehensive workout tracking app with personalized exercise routines, progress monitoring, video demonstrations, and daily fitness goals."
     },
     {
-      title: "E-commerce App",
-      description: "Feature-rich shopping app with AR product preview.",
-      image: "/images/project-ios-shopping.jpg",
-      link: "#"
+      title: "Grocery Shopping App",
+      category: "E-commerce",
+      imageSet: 'i',
+      description: "Modern grocery shopping platform featuring fresh produce, real-time inventory, promotions, and intuitive cart management for convenient online shopping."
     },
     {
-      title: "Social Network",
-      description: "Social networking app with real-time features.",
-      image: "/images/project-ios-social.jpg",
-      link: "#"
+      title: "Food Delivery Mobile App",
+      category: "Food & Delivery",
+      imageSet: 'a',
+      description: "Complete pizza ordering and restaurant delivery app with menu browsing, customization options, and seamless checkout experience."
     }
   ],
   faqs: [
@@ -673,22 +675,22 @@ export const androidDevelopmentData = {
   ],
   projects: [
     {
-      title: "Travel App",
-      description: "Feature-rich travel planning and booking application.",
-      image: "/images/project-android-travel.jpg",
-      link: "#"
+      title: "Car Rental Booking App",
+      category: "Transportation",
+      imageSet: 'k',
+      description: "Premium car rental service with simple booking process, instant confirmation, and luxury vehicle selection for travelers."
     },
     {
-      title: "Health Monitor",
-      description: "Health tracking app with sensor integration.",
-      image: "/images/project-android-health.jpg",
-      link: "#"
+      title: "Fitness Tracking App",
+      category: "Health & Fitness",
+      imageSet: 'd',
+      description: "Comprehensive workout tracking app with personalized exercise routines, progress monitoring, video demonstrations, and daily fitness goals."
     },
     {
-      title: "Business Tools",
-      description: "Enterprise productivity suite for Android.",
-      image: "/images/project-android-business.jpg",
-      link: "#"
+      title: "Fashion E-commerce App",
+      category: "Fashion & Retail",
+      imageSet: 'j',
+      description: "Clothing and fashion shopping platform with detailed product views, color/size selection, reviews, and seamless checkout."
     }
   ],
   faqs: [
@@ -790,22 +792,22 @@ export const visionProData = {
   ],
   projects: [
     {
-      title: "Spatial Design Tool",
-      description: "3D design application for spatial computing.",
-      image: "/images/project-vision-design.jpg",
-      link: "#"
+      title: "AR Furniture Visualizer",
+      category: "Technology",
+      imageSet: 'f',
+      description: "Augmented reality furniture visualization app allowing users to see furniture in their space before purchasing."
     },
     {
-      title: "Immersive Training",
-      description: "Interactive training simulations in AR.",
-      image: "/images/project-vision-training.jpg",
-      link: "#"
+      title: "Real Estate Property Search",
+      category: "Real Estate",
+      imageSet: 'c',
+      description: "Advanced property finder app with location-based search, interactive maps, and personalized home recommendations."
     },
     {
-      title: "Virtual Workspace",
-      description: "Productivity suite for spatial computing.",
-      image: "/images/project-vision-work.jpg",
-      link: "#"
+      title: "Healthy Meal Planner App",
+      category: "Food & Health",
+      imageSet: 'b',
+      description: "Meal customization platform for creating perfect salads with favorite toppings and dressings tailored to your preferences."
     }
   ],
   faqs: [
@@ -831,120 +833,3 @@ export const visionProData = {
     }
   ]
 };
-
-// AI Chatbot Development Data
-export const aiChatbotData = {
-  title: "AI Chatbot Development",
-  description: "Build intelligent, conversational AI chatbots that enhance customer service and automate business processes.",
-  approach: "Our AI chatbot development approach combines natural language processing with machine learning to create intelligent, context-aware conversational agents.",
-  approachPoints: [
-    { title: "Natural Conversations", description: "Creating human-like interactions with advanced NLP." },
-    { title: "Context Awareness", description: "Maintaining conversation context and history." },
-    { title: "Multi-Channel Support", description: "Deploying across various platforms and channels." },
-    { title: "Continuous Learning", description: "Improving through user interactions and feedback." },
-  ],
-  approachImage: "/images/ai-chatbot-dev.jpg",
-  technologies: [
-    {
-      id: 1,
-      title: "NLP & ML",
-      description: "Natural language processing and machine learning.",
-      stack: [
-        { name: "GPT" },
-        { name: "BERT" },
-        { name: "Rasa" },
-        { name: "Dialogflow" },
-      ]
-    },
-    {
-      id: 2,
-      title: "Integration",
-      description: "Platform integration and deployment.",
-      stack: [
-        { name: "Web" },
-        { name: "Mobile" },
-        { name: "Messaging" },
-        { name: "Voice" },
-      ]
-    },
-    {
-      id: 3,
-      title: "Analytics",
-      description: "Chatbot analytics and monitoring.",
-      stack: [
-        { name: "Metrics" },
-        { name: "Logging" },
-        { name: "A/B Testing" },
-        { name: "Feedback" },
-      ]
-    }
-  ],
-  process: [
-    {
-      title: "Requirement Analysis",
-      description: "Understanding chatbot use cases and requirements."
-    },
-    {
-      title: "Design",
-      description: "Designing conversation flows and personality."
-    },
-    {
-      title: "Development",
-      description: "Building and training the chatbot."
-    },
-    {
-      title: "Testing",
-      description: "Testing conversations and responses."
-    },
-    {
-      title: "Deployment",
-      description: "Deploying across chosen platforms."
-    },
-    {
-      title: "Optimization",
-      description: "Continuous improvement and learning."
-    }
-  ],
-  projects: [
-    {
-      title: "Customer Service Bot",
-      description: "24/7 customer support chatbot for e-commerce.",
-      image: "/images/project-chatbot-service.jpg",
-      link: "#"
-    },
-    {
-      title: "HR Assistant",
-      description: "AI-powered HR assistant for employee queries.",
-      image: "/images/project-chatbot-hr.jpg",
-      link: "#"
-    },
-    {
-      title: "Healthcare Bot",
-      description: "Medical information and appointment chatbot.",
-      image: "/images/project-chatbot-health.jpg",
-      link: "#"
-    }
-  ],
-  faqs: [
-    {
-      question: "What platforms can chatbots be deployed on?",
-      answer: "We can deploy chatbots on websites, mobile apps, messaging platforms (WhatsApp, Facebook Messenger), and voice assistants."
-    },
-    {
-      question: "How do you handle complex conversations?",
-      answer: "We use advanced NLP and context management to handle complex, multi-turn conversations and maintain context."
-    },
-    {
-      question: "Can chatbots integrate with existing systems?",
-      answer: "Yes, we can integrate chatbots with your CRM, ERP, and other business systems for seamless operations."
-    },
-    {
-      question: "How do you measure chatbot performance?",
-      answer: "We track various metrics including response accuracy, user satisfaction, conversation completion rates, and business outcomes."
-    },
-    {
-      question: "Can chatbots be customized for specific industries?",
-      answer: "Yes, we can train and customize chatbots with industry-specific knowledge and terminology for various sectors."
-    }
-  ]
-}; 

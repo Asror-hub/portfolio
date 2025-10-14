@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaCode, FaMobile, FaServer, FaShieldAlt, FaRocket, FaUsers } from 'react-icons/fa';
 import ServiceTemplate from './ServiceTemplate';
 
 const WebAppDevelopment = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
   const serviceData = {
     title: "Web App Development",
     subtitle: "Build Powerful Web Solutions",
     description: "Create modern, scalable, and secure web applications that deliver exceptional user experiences and drive business growth.",
     highlightText: "We build web applications that are not just functional, but transformative for your business.",
     approach: "Our web development approach combines cutting-edge technology with user-centric design to create applications that exceed expectations.",
-    approachImage: "/images/services/web-approach.jpg",
+    approachImage: "/web_1.png",
     approachPoints: [
       {
         icon: <FaCode className="text-4xl text-primary" />,
@@ -102,22 +106,22 @@ const WebAppDevelopment = () => {
     ],
     projects: [
       {
-        title: "E-commerce Platform",
-        description: "A full-featured online shopping platform with advanced search and payment integration.",
-        image: "/images/projects/web-1.jpg",
-        link: "/projects/ecommerce-platform"
+        title: "Furniture Shopping Platform",
+        category: "E-commerce",
+        imageSet: 'e',
+        description: "Premium furniture shopping app featuring modern designs, room transformations, and curated collections for home decor."
       },
       {
-        title: "Content Management System",
-        description: "Custom CMS for managing and publishing digital content efficiently.",
-        image: "/images/projects/web-2.jpg",
-        link: "/projects/cms"
+        title: "AR Furniture Visualizer",
+        category: "Technology",
+        imageSet: 'f',
+        description: "Augmented reality furniture visualization app allowing users to see furniture in their space before purchasing."
       },
       {
-        title: "Business Dashboard",
-        description: "Interactive dashboard for real-time business analytics and reporting.",
-        image: "/images/projects/web-3.jpg",
-        link: "/projects/business-dashboard"
+        title: "Fashion E-commerce App",
+        category: "Fashion & Retail",
+        imageSet: 'j',
+        description: "Clothing and fashion shopping platform with detailed product views, color/size selection, reviews, and seamless checkout."
       }
     ],
     faqs: [
