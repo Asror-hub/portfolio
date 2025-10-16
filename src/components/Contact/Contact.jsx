@@ -99,9 +99,9 @@ const Contact = ({ selectedProject = null }) => {
         project: formData.project || 'General Inquiry',
         to_name: 'Norasoft Team',
         reply_to: formData.email,
-        to_email: 'asrorsardorugli@mail.com',
+        to_email: 'info@norasoft.tech',
         company_name: 'Norasoft',
-        website: 'https://norasoft.com',
+        website: 'https://norasoft.tech',
         current_date: new Date().toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
@@ -172,7 +172,7 @@ const Contact = ({ selectedProject = null }) => {
               </div>
               <div>
                 <h3 className="heading-3 mb-2">Email Us</h3>
-                <p className="body-text">asrorodilov@email.com</p>
+                <p className="body-text">info@norasoft.tech</p>
               </div>
             </div>
             <div className="flex items-start gap-4 group">

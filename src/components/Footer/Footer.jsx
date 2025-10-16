@@ -73,11 +73,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <FaEnvelope className="text-primary-500 mt-1" />
-                <span className="body-text">info@norasoft.com</span>
+                <span className="body-text">info@norasoft.tech</span>
               </li>
               <li className="flex items-start space-x-3">
                 <FaEnvelope className="text-primary-500 mt-1" />
-                <span className="body-text">support@norasoft.com</span>
+                <span className="body-text">support@norasoft.tech</span>
               </li>
               <li className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-primary-500 mt-1" />

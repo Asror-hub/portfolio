@@ -885,7 +885,7 @@ const IndustryTemplate = () => {
                     </span>
               </button>
               <a
-                href="mailto:info@norasoft.com"
+                href="mailto:info@norasoft.tech"
                     className="secondary-btn flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
               >
                 Contact Sales

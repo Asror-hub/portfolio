@@ -68,15 +68,7 @@ const Services = () => {
 
   const handleToggle = () => {
     setShowAll(!showAll);
-    if (!showAll) {
-      // Only scroll when expanding
-      const servicesSection = document.getElementById('services-grid');
-      if (servicesSection) {
-        const yOffset = -100;
-        const y = servicesSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }
+    // No scrolling - just toggle in place for smooth UX
   };
 
   return (

@@ -2,10 +2,10 @@ import React from "react";
 import { FaArrowDown } from "react-icons/fa";
 
 const HeroBottom = () => {
-  const scrollToServices = () => {
-    const servicesSection = document.getElementById('services');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToNextSection = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -26,9 +26,9 @@ const HeroBottom = () => {
 
           {/* Scroll Button */}
           <button 
-            onClick={scrollToServices}
+            onClick={scrollToNextSection}
             className="hover:scale-110 transition-transform duration-300 p-2 group"
-            aria-label="Scroll to services section"
+            aria-label="Scroll to next section"
           >
             <div className="animate-bounce">
               <div className="w-12 h-12 rounded-full bg-primary-500/20 backdrop-blur-sm border border-primary-500/30 flex items-center justify-center group-hover:bg-primary-500/30 transition-colors duration-300">
