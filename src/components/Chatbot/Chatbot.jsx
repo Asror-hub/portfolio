@@ -211,7 +211,7 @@ const Chatbot = () => {
     <>
       {/* Welcome Message */}
       {showWelcome && !isOpen && (
-        <div className="fixed bottom-28 right-6 z-40 animate-in slide-in-from-bottom-2 duration-500">
+        <div className="fixed bottom-44 sm:bottom-28 right-6 z-40 animate-in slide-in-from-bottom-2 duration-500">
           <div className="relative">
             {/* Speech bubble */}
             <div className="bg-dark-700 border border-dark-600 rounded-2xl p-3 shadow-2xl max-w-xs relative">
@@ -244,7 +244,7 @@ const Chatbot = () => {
       {/* Chatbot Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-20 h-20 rounded-full transition-all duration-300 group ${
+        className={`fixed bottom-20 sm:bottom-6 right-6 z-50 w-20 h-20 rounded-full transition-all duration-300 group ${
           isOpen 
             ? 'bg-red-500 hover:bg-red-600' 
             : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500'
@@ -260,7 +260,7 @@ const Chatbot = () => {
       {/* Chatbot Window */}
       {isOpen && (
         <div 
-          className="fixed bottom-28 right-6 z-40 w-96 h-[700px] sm:w-[400px] sm:h-[600px] max-w-[calc(100vw-3rem)] max-h-[calc(100vh-4rem)] bg-dark-800/98 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl animate-in slide-in-from-bottom-2 duration-300 flex flex-col sm:bottom-32"
+          className="fixed bottom-44 sm:bottom-32 right-6 z-40 w-96 h-[700px] sm:w-[400px] sm:h-[600px] max-w-[calc(100vw-3rem)] max-h-[calc(100vh-4rem)] bg-dark-800/98 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl animate-in slide-in-from-bottom-2 duration-300 flex flex-col"
           onMouseEnter={handleChatbotMouseEnter}
           onMouseLeave={handleChatbotMouseLeave}
         >
