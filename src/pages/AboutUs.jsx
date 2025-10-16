@@ -313,7 +313,7 @@ const AboutUs = () => {
                         
                         <div className="relative z-10 text-center">
                           <div className="text-6xl font-bold text-gradient group-hover:scale-105 transition-transform duration-300">
-                            Codvex
+                            Norasoft
                           </div>
                         </div>
                       </div>
@@ -351,10 +351,10 @@ const AboutUs = () => {
           }}></div>
         </div>
 
-        {/* Background Codvex Text */}
+        {/* Background Norasoft Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-full overflow-hidden">
           <h1 className="text-6xl sm:text-8xl md:text-[150px] lg:text-[240px] xl:text-[320px] 2xl:text-[400px] text-center font-bold uppercase subtle-bg-text whitespace-nowrap select-none">
-            Codvex
+            Norasoft
           </h1>
         </div>
 
@@ -382,7 +382,8 @@ const AboutUs = () => {
                       <FaPlay className="text-lg sm:text-2xl" />
                     </span>
                   </a>
-                  <button 
+                  {/* Learn More button disabled */}
+                  {/* <button 
                     onClick={() => {
                       const nextSection = document.querySelector('section');
                       if (nextSection) {
@@ -395,7 +396,7 @@ const AboutUs = () => {
                     <span>
                       <FaArrowRight className="text-lg sm:text-2xl" />
                     </span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
 

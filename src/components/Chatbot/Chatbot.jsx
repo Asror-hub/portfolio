@@ -8,7 +8,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello! I'm Codvex's AI assistant. How can I help you today?",
+      text: "Hello! I'm Norasoft's AI assistant. How can I help you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -113,7 +113,7 @@ const Chatbot = () => {
     
     // Services
     if (message.includes('what services') || message.includes('what do you offer') || message.includes('what do you do') || (message.includes('service') && !message.includes('cost'))) {
-      return "At Codvex, we specialize in:\n\n• Custom Software Development - Tailored solutions for your unique business needs\n• Mobile App Development - Native iOS & Android applications\n• Web App Development - Modern, scalable web applications\n• AI Development - Intelligent automation and ML solutions\n• Cross-Platform Development - Cost-effective multi-platform apps\n\nEach service includes full project management, quality assurance, and post-launch support. Which area interests you most?";
+      return "At Norasoft, we specialize in:\n\n• Custom Software Development - Tailored solutions for your unique business needs\n• Mobile App Development - Native iOS & Android applications\n• Web App Development - Modern, scalable web applications\n• AI Development - Intelligent automation and ML solutions\n• Cross-Platform Development - Cost-effective multi-platform apps\n\nEach service includes full project management, quality assurance, and post-launch support. Which area interests you most?";
     }
     
     // Mobile app specific
@@ -153,7 +153,7 @@ const Chatbot = () => {
     
     // Team/About/Company
     if (message.includes('team') || message.includes('about') || message.includes('company') || message.includes('who are you')) {
-      return "Codvex is a premier software development company dedicated to transforming businesses through innovative technology solutions.\n\n👥 15+ Expert Developers\n🏆 5+ Years of Excellence\n🌍 Serving clients globally\n🎯 100% Project Success Rate\n\nOur multidisciplinary team includes senior developers, UI/UX designers, QA specialists, and project managers. We combine technical expertise with business acumen to deliver solutions that drive real results. What would you like to know more about?";
+      return "Norasoft is a premier software development company dedicated to transforming businesses through innovative technology solutions.\n\n👥 15+ Expert Developers\n🏆 5+ Years of Excellence\n🌍 Serving clients globally\n🎯 100% Project Success Rate\n\nOur multidisciplinary team includes senior developers, UI/UX designers, QA specialists, and project managers. We combine technical expertise with business acumen to deliver solutions that drive real results. What would you like to know more about?";
     }
     
     // Process/Methodology
@@ -173,12 +173,12 @@ const Chatbot = () => {
     
     // Getting Started
     if (message.includes('get started') || message.includes('how to start') || message.includes('begin')) {
-      return "Getting started with Codvex is simple:\n\n1. Share your project idea through our contact form\n2. Schedule a free consultation call\n3. Receive a detailed proposal and quote\n4. Sign agreement and kick off the project\n5. Start building your solution!\n\nThe initial consultation is completely free with no obligations. We'll discuss your requirements, provide expert recommendations, and create a roadmap for success. Ready to take the first step?";
+      return "Getting started with Norasoft is simple:\n\n1. Share your project idea through our contact form\n2. Schedule a free consultation call\n3. Receive a detailed proposal and quote\n4. Sign agreement and kick off the project\n5. Start building your solution!\n\nThe initial consultation is completely free with no obligations. We'll discuss your requirements, provide expert recommendations, and create a roadmap for success. Ready to take the first step?";
     }
     
     // Greetings
     if (message.includes('hello') || message.includes('hi') || message.includes('hey') || message.includes('good morning') || message.includes('good afternoon')) {
-      return "Hello! Welcome to Codvex! 👋\n\nI'm your AI assistant, here to help you with:\n\n• Information about our services\n• Project estimates and timelines\n• Portfolio and case studies\n• Technical questions\n• Getting started with your project\n\nWhat would you like to know? Feel free to ask anything!";
+      return "Hello! Welcome to Norasoft! 👋\n\nI'm your AI assistant, here to help you with:\n\n• Information about our services\n• Project estimates and timelines\n• Portfolio and case studies\n• Technical questions\n• Getting started with your project\n\nWhat would you like to know? Feel free to ask anything!";
     }
     
     // Thanks

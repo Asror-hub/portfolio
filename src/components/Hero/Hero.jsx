@@ -1,5 +1,5 @@
 import React from "react";
-import { FaMobile, FaLaptopCode } from "react-icons/fa";
+import { FaMobile, FaLaptopCode, FaArrowRight } from "react-icons/fa";
 import HeroBottom from "./HeroBottom";
 
 const Hero = () => {
@@ -36,10 +36,10 @@ const Hero = () => {
           }}></div>
         </div>
 
-        {/* Background Codvex Text */}
+        {/* Background Norasoft Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-full overflow-hidden">
-          <h1 className="text-6xl sm:text-8xl md:text-[150px] lg:text-[240px] xl:text-[320px] 2xl:text-[400px] text-center font-bold uppercase subtle-bg-text whitespace-nowrap select-none">
-            Codvex
+          <h1 className="text-4xl sm:text-6xl md:text-[120px] lg:text-[180px] xl:text-[240px] 2xl:text-[300px] text-center font-bold uppercase subtle-bg-text whitespace-nowrap select-none">
+            Norasoft
           </h1>
         </div>
 
@@ -48,72 +48,31 @@ const Hero = () => {
             <div className="flex flex-col items-center justify-center text-center space-y-12">
               {/* Main Content */}
               <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8" data-aos="fade-up">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-neutral-100 leading-tight">
-                  Transforming Business with{" "}
-                  <span className="text-gradient">Innovation</span>
+                <h1 className="font-bold leading-tight max-w-5xl mx-auto px-4 sm:px-0 -mt-24">
+                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-2 sm:mb-4 whitespace-nowrap">
+                    <span className="text-primary-500">Mobile</span>
+                    <span className="text-neutral-100"> & </span>
+                    <span className="text-primary-500">Web</span>
+                  </div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-neutral-100 whitespace-nowrap mb-2 sm:mb-4">
+                    application development
+                  </div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-neutral-100 whitespace-nowrap">
+                    company
+                  </div>
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-3xl mx-auto px-4 sm:px-0">
-                  Expert mobile and web app development, delivering custom software solutions that transform your business vision into reality
+                <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-3xl mx-auto px-4 sm:px-0 mt-12 sm:mt-16">
+                  Transform your ideas into powerful mobile and web applications with our expert development team.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none">
+                <div className="flex flex-col items-center justify-center gap-4 w-full max-w-2xl mx-auto mt-16 sm:mt-24">
+                  {/* Primary Button with Glassy Effect */}
                   <button 
                     onClick={scrollToContact}
-                    className="primary-btn group flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg glow px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
+                    className="primary-btn glow px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
                   >
-                    Get Started
-                    <span>
-                      <FaMobile className="text-lg sm:text-2xl" />
-                    </span>
+                    Let's discuss your project
+                    <FaArrowRight className="text-white text-base sm:text-lg group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
-                  <button 
-                    onClick={playCompanyVideo}
-                    className="secondary-btn flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
-                  >
-                    Learn More
-                    <span>
-                      <FaLaptopCode className="text-lg sm:text-2xl" />
-                    </span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Stats Section */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto w-full px-4 sm:px-0" data-aos="fade-up" data-aos-delay="200">
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">50+</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Projects</div>
-                  </div>
-                </div>
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">30+</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Happy Clients</div>
-                  </div>
-                </div>
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">15+</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Developers</div>
-                  </div>
-                </div>
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">24/7</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Support</div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -128,3 +87,8 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+
+

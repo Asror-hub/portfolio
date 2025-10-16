@@ -170,7 +170,7 @@ const ServicePage = ({ service }) => {
         {/* Background Company Name Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-full overflow-hidden">
           <h1 className="text-6xl sm:text-8xl md:text-[150px] lg:text-[240px] xl:text-[320px] 2xl:text-[400px] text-center font-bold uppercase subtle-bg-text whitespace-nowrap select-none">
-            Codvex
+            Norasoft
           </h1>
         </div>
 
@@ -379,7 +379,7 @@ const ServicePage = ({ service }) => {
                       <div className="w-3 h-3 bg-red-500 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
                       <div className="w-3 h-3 bg-yellow-500 rounded-full group-hover:scale-110 transition-transform duration-300" style={{animationDelay: '0.1s'}}></div>
                       <div className="w-3 h-3 bg-green-500 rounded-full group-hover:scale-110 transition-transform duration-300" style={{animationDelay: '0.2s'}}></div>
-                      <span className="text-slate-300 font-mono text-sm ml-4 font-medium group-hover:text-slate-200 transition-colors duration-300">web-dev.soltech</span>
+                      <span className="text-slate-300 font-mono text-sm ml-4 font-medium group-hover:text-slate-200 transition-colors duration-300">web-dev.norasoft</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full group-hover:scale-125 transition-transform duration-300 animate-pulse"></div>

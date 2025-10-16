@@ -22,7 +22,7 @@ const ServiceCTA = () => {
               Contact Us
             </Link>
             <a
-              href="mailto:info@soltech.com"
+              href="mailto:info@norasoft.com"
               className="secondary-btn px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300"
             >
               Get a Quote

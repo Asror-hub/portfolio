@@ -43,6 +43,9 @@ const HomePage = () => (
     <div className="pt-20">
       <Hero />
     </div>
+    <div id="projects">
+      <ProjectsSection />
+    </div>
     <div id="services">
       <Services />
     </div>
@@ -51,9 +54,6 @@ const HomePage = () => (
     </div>
     <div id="industries">
       <Industries />
-    </div>
-    <div id="projects">
-      <ProjectsSection />
     </div>
     <div id="testimonials">
       <Testimonials />

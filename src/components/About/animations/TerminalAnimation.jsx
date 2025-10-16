@@ -103,7 +103,7 @@ function TechAnimation() {
             <div className="w-3 h-3 rounded-full bg-yellow-500/80 group-hover:bg-yellow-500 transition-colors"></div>
             <div className="w-3 h-3 rounded-full bg-green-500/80 group-hover:bg-green-500 transition-colors"></div>
           </div>
-          <span className="text-primary-400/80 text-xs font-mono">~/soltech/app</span>
+          <span className="text-primary-400/80 text-xs font-mono">~/norasoft/app</span>
         </div>
         
         {/* Terminal content */}

@@ -202,8 +202,8 @@ const Navbar = () => {
           {/* logo section */}
           <Link to="/" className="group relative flex items-center gap-3">
             <h1 className="text-3xl md:text-4xl font-black tracking-wider">
-              <span className="text-primary-500 group-hover:text-primary-400 transition-colors duration-300" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.05em' }}>Cod</span>
-              <span className="text-white/90 group-hover:text-white transition-colors duration-300 font-extralight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.15em' }}>vex</span>
+              <span className="text-primary-500 group-hover:text-primary-400 transition-colors duration-300" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.05em' }}>Nora</span>
+              <span className="text-white/90 group-hover:text-white transition-colors duration-300 font-extralight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.15em' }}>soft</span>
             </h1>
             <div className="w-2.5 h-2.5 rounded-full bg-primary-500 group-hover:scale-125 transition-transform duration-300"></div>
           </Link>
@@ -379,13 +379,13 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 z-[60] ${
+          className={`lg:hidden fixed inset-0 bg-black/80 transition-opacity duration-300 z-[60] ${
             isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className={`fixed right-0 top-0 h-screen w-[320px] bg-dark-900/98 backdrop-blur-2xl border-l border-white/10 transform transition-transform duration-300 ease-out shadow-2xl ${
+            className={`fixed right-0 top-0 h-screen w-[320px] bg-dark-900 border-l border-white/10 transform transition-transform duration-300 ease-out shadow-2xl ${
               isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
             onClick={(e) => e.stopPropagation()}

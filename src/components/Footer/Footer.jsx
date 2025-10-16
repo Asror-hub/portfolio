@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-gradient">Codvex</h3>
+            <h3 className="text-2xl font-bold text-gradient">Norasoft</h3>
             <p className="body-text">
               Building the future of digital innovation through cutting-edge technology solutions.
             </p>
@@ -73,11 +73,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <FaEnvelope className="text-primary-500 mt-1" />
-                <span className="body-text">info@soltech.com</span>
+                <span className="body-text">info@norasoft.com</span>
               </li>
               <li className="flex items-start space-x-3">
                 <FaEnvelope className="text-primary-500 mt-1" />
-                <span className="body-text">support@soltech.com</span>
+                <span className="body-text">support@norasoft.com</span>
               </li>
               <li className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-primary-500 mt-1" />
@@ -89,7 +89,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-dark-700 mt-12 pt-8 text-center">
-          <p className="body-text">&copy; {new Date().getFullYear()} Codvex. All rights reserved.</p>
+          <p className="body-text">&copy; {new Date().getFullYear()} Norasoft. All rights reserved.</p>
         </div>
       </div>
     </footer>
