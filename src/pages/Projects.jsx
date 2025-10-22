@@ -313,7 +313,7 @@ const Projects = () => {
 
       {/* Projects Grid */}
       <section className="section-padding bg-dark-800/30">
-        <div className="w-[86%] mx-auto px-6">
+        <div className="w-full max-w-[93%] px-4 sm:px-6 lg:px-8 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {projects.map((project, index) => (
               <div
