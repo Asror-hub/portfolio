@@ -400,45 +400,6 @@ const AboutUs = () => {
                 </div>
               </div>
 
-              {/* Stats Section */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto w-full px-4 sm:px-0" data-aos="fade-up" data-aos-delay="200">
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">50+</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Projects Completed</div>
-                  </div>
-                </div>
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">30+</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Happy Clients</div>
-                  </div>
-                </div>
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">4+</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Years Experience</div>
-                  </div>
-                </div>
-                <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl text-center group p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-                  {/* Glass reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 group-hover:scale-105 transition-transform duration-300">24/7</div>
-                    <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/80 transition-colors duration-400">Support</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -537,48 +498,6 @@ const AboutUs = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-32 bg-dark-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-              {/* Glass reflection sweep */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-              
-              <div className="relative z-10 text-center">
-                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">50+</div>
-                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Projects Completed</div>
-              </div>
-            </div>
-            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-              {/* Glass reflection sweep */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-              
-              <div className="relative z-10 text-center">
-                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">30+</div>
-                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Happy Clients</div>
-              </div>
-            </div>
-            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-              {/* Glass reflection sweep */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-              
-              <div className="relative z-10 text-center">
-                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">15+</div>
-                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Developers</div>
-              </div>
-            </div>
-            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 group hover:bg-white/8 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden authentic-glass-card">
-              {/* Glass reflection sweep */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] group-hover:transition-transform group-hover:duration-1000"></div>
-              
-              <div className="relative z-10 text-center">
-                <div className="text-5xl font-bold text-gradient mb-4 group-hover:scale-105 transition-transform duration-300">4+</div>
-                <div className="text-xl text-white/70 group-hover:text-white/80 transition-colors duration-400">Years Experience</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </Layout>
   );
 };
