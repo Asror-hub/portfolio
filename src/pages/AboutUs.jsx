@@ -370,34 +370,6 @@ const AboutUs = () => {
                 <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-3xl mx-auto px-4 sm:px-0">
                   We are a team of passionate developers, designers, and innovators dedicated to creating exceptional digital experiences that transform businesses and delight users.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none">
-                  <a 
-                    href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="primary-btn group flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg glow px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
-                  >
-                    Watch Our Story
-                    <span>
-                      <FaPlay className="text-lg sm:text-2xl" />
-                    </span>
-                  </a>
-                  {/* Learn More button disabled */}
-                  {/* <button 
-                    onClick={() => {
-                      const nextSection = document.querySelector('section');
-                      if (nextSection) {
-                        nextSection.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className="secondary-btn flex items-center justify-center gap-2 text-sm sm:text-lg rounded-lg px-4 sm:px-6 py-3 sm:py-3 w-full sm:w-auto"
-                  >
-                    Learn More
-                    <span>
-                      <FaArrowRight className="text-lg sm:text-2xl" />
-                    </span>
-                  </button> */}
-                </div>
               </div>
 
             </div>
