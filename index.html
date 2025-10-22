@@ -53,7 +53,14 @@
       "@type": "Organization",
       "name": "Norasoft",
       "url": "https://norasoft.tech",
-      "logo": "https://norasoft.tech/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://norasoft.tech/logo.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Norasoft Logo"
+      },
+      "image": "https://norasoft.tech/logo.png",
       "description": "Transform your ideas into powerful mobile and web applications with Norasoft. Expert development team specializing in iOS, Android, React Native, and web applications.",
       "foundingDate": "2020",
       "address": {
@@ -96,7 +103,13 @@
       "description": "Mobile and Web App Development Company",
       "publisher": {
         "@type": "Organization",
-        "name": "Norasoft"
+        "name": "Norasoft",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://norasoft.tech/logo.png",
+          "width": 512,
+          "height": 512
+        }
       },
       "potentialAction": {
         "@type": "SearchAction",
@@ -105,6 +118,42 @@
       }
     }
     </script>
+    
+    <!-- Structured Data - Logo for Search Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      "name": "Norasoft Logo",
+      "url": "https://norasoft.tech/logo.png",
+      "width": 512,
+      "height": 512,
+      "caption": "Norasoft - Mobile & Web App Development Company",
+      "contentUrl": "https://norasoft.tech/logo.png",
+      "encodingFormat": "image/png",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Norasoft",
+        "url": "https://norasoft.tech"
+      }
+    }
+    </script>
+    
+    <!-- Logo and Brand Meta Tags -->
+    <meta name="logo" content="https://norasoft.tech/logo.png" />
+    <meta name="brand" content="Norasoft" />
+    <meta name="company" content="Norasoft" />
+    <meta name="organization" content="Norasoft" />
+    <meta name="business-name" content="Norasoft" />
+    <meta name="company-name" content="Norasoft" />
+    <meta name="brand-name" content="Norasoft" />
+    <meta name="site-name" content="Norasoft" />
+    <meta name="application-name" content="Norasoft" />
+    <meta name="apple-mobile-web-app-title" content="Norasoft" />
+    <meta name="msapplication-tooltip" content="Norasoft - Mobile & Web App Development" />
+    <meta name="msapplication-starturl" content="/" />
+    <meta name="msapplication-navbutton-color" content="#6366f1" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="geo.region" content="US" />
