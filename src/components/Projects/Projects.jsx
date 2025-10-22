@@ -10,12 +10,20 @@ import iCard3 from "../../assets/i_card_3.png";
 import dCard1 from "../../assets/d_card1.png";
 import dCard2 from "../../assets/d_card_2.png";
 import dCard3 from "../../assets/d_card3.png";
+import lCard1 from "../../assets/l_card_1.png";
+import lCard2 from "../../assets/l_card_2.png";
+import lCard3 from "../../assets/l_card_3.png";
+import mCard1 from "../../assets/m_card_1.png";
+import mCard2 from "../../assets/m_card_2.png";
+import mCard3 from "../../assets/m_card_3.png";
 
 // Dynamic image sets - each set contains 3 images for the phone stack
 const imageSets = {
   'a': [aCard1, aCard2, aCard3],
   'i': [iCard1, iCard2, iCard3],
-  'd': [dCard1, dCard2, dCard3]
+  'd': [dCard1, dCard2, dCard3],
+  'l': [lCard1, lCard2, lCard3],
+  'm': [mCard1, mCard2, mCard3]
 };
 
 const projects = [
@@ -36,6 +44,18 @@ const projects = [
     category: "Health & Fitness",
     imageSet: 'd',
     description: "Comprehensive workout tracking app with personalized exercise routines, progress monitoring, video demonstrations, and daily fitness goals.",
+  },
+  {
+    title: "Banking & Finance App",
+    category: "FinTech",
+    imageSet: 'l',
+    description: "Secure mobile banking solution with account management, money transfers, bill payments, and real-time transaction monitoring for modern financial needs.",
+  },
+  {
+    title: "Social Media Platform",
+    category: "Social Networking",
+    imageSet: 'm',
+    description: "Engaging social media app with photo sharing, messaging, stories, and community features designed for seamless user interaction and content discovery.",
   },
 ];
 

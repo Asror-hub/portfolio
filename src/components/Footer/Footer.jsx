@@ -79,10 +79,7 @@ const Footer = () => {
                 <FaEnvelope className="text-primary-500 mt-1" />
                 <span className="body-text">support@norasoft.tech</span>
               </li>
-              <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-primary-500 mt-1" />
-                <span className="body-text">123 Innovation Drive, Tech City, CA 90210</span>
-              </li>
+              
             </ul>
           </div>
         </div>
