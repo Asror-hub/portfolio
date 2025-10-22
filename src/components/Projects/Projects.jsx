@@ -161,6 +161,10 @@ const Projects = () => {
                     style={{
                       minHeight: '192px'
                     }}
+                    onError={(e) => {
+                      console.error(`Error loading image for project ${index}:`, project.title, 'imageSet:', project.imageSet, 'image:', imageSets[project.imageSet][2]);
+                      e.target.style.display = 'none';
+                    }}
                   />
                 </div>
               </div>
