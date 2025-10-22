@@ -318,7 +318,7 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="card overflow-visible group hover:scale-110 transition-transform duration-300 cursor-pointer sm:cursor-default"
+                className="card overflow-visible group hover:scale-105 transition-all duration-500 cursor-pointer sm:cursor-default hover:shadow-primary-500/20"
                 onClick={() => handleCardClick(index)}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
@@ -390,10 +390,10 @@ const Projects = () => {
                     />
                   </div>
                 </div>
-                <div className="p-5">
-                  <span className="text-xs text-primary-400 font-medium bg-primary-500/20 px-2 py-1 rounded-full">{project.category}</span>
-                  <h3 className="text-lg font-semibold text-neutral-100 mt-2 mb-2">{project.title}</h3>
-                  <p className="text-sm text-neutral-300 leading-relaxed line-clamp-3 mb-4">{project.description}</p>
+                <div className="p-6">
+                  <span className="text-xs text-primary-400 font-medium bg-primary-500/20 px-3 py-1 rounded-full group-hover:bg-primary-500/30 transition-colors duration-300">{project.category}</span>
+                  <h3 className="text-xl font-semibold text-neutral-100 mt-3 mb-3 group-hover:text-primary-300 transition-colors duration-300">{project.title}</h3>
+                  <p className="text-sm text-neutral-300 leading-relaxed line-clamp-3 mb-4 group-hover:text-neutral-200 transition-colors duration-300">{project.description}</p>
                   <button
                     onClick={() => scrollToContact(project.title)}
                     className="w-full primary-btn glow px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 group/btn hover:scale-105 transition-all duration-300"
